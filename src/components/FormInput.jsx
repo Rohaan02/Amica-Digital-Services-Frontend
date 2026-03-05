@@ -8,10 +8,29 @@ const FormInput = ({
   required = false,
   options = [], // For select inputs
   className = "",
+  error = "",
+  touched = false,
   ...props
 }) => {
-  const inputClass =
-    "w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none";
+  const baseInputClass =
+    "w-full px-4 py-3 rounded-lg border transition-all outline-none";
+
+  const getInputClasses = () => {
+    let classes = baseInputClass;
+
+    // Add border color based on error state
+    if (error && touched) {
+      classes +=
+        " border-red-500 focus:ring-red-500 bg-red-50 dark:bg-red-900/10";
+    } else {
+      classes +=
+        " border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent";
+    }
+
+    return classes;
+  };
+
+  const inputClass = getInputClasses();
 
   return (
     <div className={`flex flex-col gap-2 ${className}`}>
@@ -29,7 +48,7 @@ const FormInput = ({
         <div className="relative">
           <select
             id={id}
-            className={`${inputClass} appearance-none`}
+            className={`${inputClass} appearance-none pr-10`}
             {...props}
           >
             <option value="">{placeholder || "Select an option"}</option>
@@ -58,6 +77,14 @@ const FormInput = ({
           className={inputClass}
           {...props}
         />
+      )}
+
+      {/* Error Message */}
+      {error && touched && (
+        <p className="text-red-500 text-sm mt-1 flex items-center gap-1">
+          <span className="material-icons text-sm">error</span>
+          {error}
+        </p>
       )}
     </div>
   );

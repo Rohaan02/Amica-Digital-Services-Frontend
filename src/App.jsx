@@ -8,10 +8,12 @@ import IntakeForm from "./pages/IntakeForm";
 import RSMCaseStudy from "./pages/CaseStudy";
 import ServiceDetail from "./components/ServiceDetail";
 import FloatingWhatsApp from "./components/FloatingWhatsApp";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <FloatingWhatsApp />
       <Routes>
         <Route path="/" element={<Home />} />

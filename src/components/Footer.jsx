@@ -24,6 +24,10 @@ const Footer = () => {
           label: "Responsible AI & Compliance",
           href: "/services/responsible-ai-compliance",
         },
+        {
+          label: "Care Agency Recruitment & Compliance Automation System",
+          href: "/services/care-agency-recruitment",
+        },
       ],
     },
     {

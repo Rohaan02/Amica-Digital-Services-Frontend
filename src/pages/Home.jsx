@@ -296,7 +296,7 @@ const Home = () => {
                   </Button>
                 </Link>
 
-                <a href="#services">
+                <a href="/services">
                   <Button
                     variant="secondary"
                     className="text-primary border-white/20 hover:bg-white/10"
