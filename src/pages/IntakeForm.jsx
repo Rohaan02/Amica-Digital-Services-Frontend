@@ -636,14 +636,14 @@ const IntakeForm = () => {
               </p>
 
               {/* Display current score if available (optional) */}
-              {fitScore > 0 && (
+              {/* {fitScore > 0 && (
                 <div className="mt-4 p-3 bg-primary/5 rounded-lg">
                   <p className="text-sm text-slate-600 dark:text-slate-400">
                     Current Fit Score:{" "}
                     <span className="font-bold text-primary">{fitScore}</span>
                   </p>
                 </div>
-              )}
+              )} */}
             </div>
 
             <div className="p-6 bg-white dark:bg-white/5 rounded-xl border border-primary/10 space-y-4">
