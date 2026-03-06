@@ -56,8 +56,10 @@ const Footer = () => {
             </span>
           </div>
           <p className="text-slate-500 text-sm leading-relaxed mb-6">
-            Pioneering the next era of digital marketing through advanced
-            artificial intelligence and automated growth engines.
+            AI Growth Systems for Care Agencies & Service Businesses <br />
+            <br /> Automate recruitment, lead generation, and compliance
+            workflows with intelligent AI automation built by operators who
+            understand your industry.
           </p>
           <div className="flex space-x-4">
             <a

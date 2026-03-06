@@ -105,13 +105,39 @@ const Home = () => {
     },
   ];
 
-  // Group services into rows of 3 for desktop
+  // Update getVisibleServices to show different number based on screen size
   const getVisibleServices = () => {
-    const startIndex = serviceSlide * 3;
-    return services.slice(startIndex, startIndex + 3);
+    const itemsPerPage =
+      window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    const startIndex = serviceSlide * itemsPerPage;
+    return services.slice(startIndex, startIndex + itemsPerPage);
   };
 
-  const totalSlides = Math.ceil(services.length / 3);
+  // Update totalSlides based on screen size
+  const getTotalSlides = () => {
+    const itemsPerPage =
+      window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
+    return Math.ceil(services.length / itemsPerPage);
+  };
+
+  const [totalSlides, setTotalSlides] = useState(getTotalSlides());
+  const [visibleServices, setVisibleServices] = useState(getVisibleServices());
+
+  // Update visible services and total slides on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      setTotalSlides(getTotalSlides());
+      setServiceSlide(0); // Reset to first slide on resize
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  // Update visible services when serviceSlide or window size changes
+  useEffect(() => {
+    setVisibleServices(getVisibleServices());
+  }, [serviceSlide, typeof window !== "undefined" ? window.innerWidth : 0]);
 
   const nextServiceSlide = () => {
     setServiceSlide((prev) => (prev + 1) % totalSlides);
@@ -196,6 +222,7 @@ const Home = () => {
     "Amica Digital Services helps ambitious businesses grow using AI-driven marketing systems, intelligent automation, and next-generation digital infrastructure.",
     "We don't just market your business — we install scalable growth engines powered by AI.",
     "Built for service businesses, healthcare, medical tourism, and regulated industries.",
+    "AI Growth Systems for Care Agencies & Service Businesses, Automate recruitment, lead generation, and compliance workflows with intelligent AI automation built by operators who understand your industry.",
   ];
 
   useEffect(() => {
@@ -217,20 +244,18 @@ const Home = () => {
     { icon: "computer", label: "SaaS & Marketplaces" },
   ];
 
-  const visibleServices = getVisibleServices();
-
   return (
-    <div className="bg-background-light dark:bg-background-dark">
+    <div className="bg-background-light dark:bg-background-dark w-full overflow-x-hidden">
       <Navigation variant="glass" />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-screen flex items-center">
+      <section className="relative overflow-hidden min-h-screen flex items-center w-full">
         {/* Background Image Slider */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 w-full">
           {heroImages.map((img, index) => (
             <div
               key={index}
-              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out ${
+              className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out w-full ${
                 index === currentSlide ? "opacity-100" : "opacity-0"
               }`}
               style={{
@@ -241,33 +266,35 @@ const Home = () => {
         </div>
 
         {/* Dark Overlay for readability */}
-        <div className="absolute inset-0 bg-slate-900/70"></div>
+        <div className="absolute inset-0 bg-slate-900/70 w-full"></div>
 
         {/* Content */}
-        <div className="relative max-w-7xl mx-auto px-6 py-20 lg:py-32 w-full">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-20 lg:py-32 w-full">
           <div className="grid lg:grid-cols-2 items-center">
             {/* LEFT CONTENT */}
-            <div className="text-white">
-              <span className="inline-block px-4 py-1.5 bg-white/10 backdrop-blur text-white text-xs font-bold rounded-full mb-6 uppercase tracking-widest">
+            <div className="text-white w-full">
+              <span className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-white/10 backdrop-blur text-white text-xs font-bold rounded-full mb-4 sm:mb-6 uppercase tracking-widest">
                 <span className="flex items-center space-x-2">
                   <span className="flex h-2 w-2 rounded-full bg-white animate-pulse"></span>
-                  <span>Intelligent Growth Engine</span>
+                  <span className="text-[10px] sm:text-xs">
+                    Intelligent Growth Engine
+                  </span>
                 </span>
               </span>
 
-              <h1 className="text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-8">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold leading-[1.2] sm:leading-[1.1] mb-4 sm:mb-6 lg:mb-8">
                 AI-Powered Digital Growth for{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-indigo">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent-indigo block sm:inline">
                   2026 Businesses
                 </span>
               </h1>
 
-              <h2 className="text-2xl lg:text-3xl font-semibold text-slate-200 mb-8 inline-block pb-2">
+              <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-slate-200 mb-6 sm:mb-8 inline-block pb-2">
                 Marketing. Automation. Intelligence. Results.
               </h2>
 
               <div
-                className="relative h-20 flex overflow-hidden mb-10"
+                className="relative h-32 sm:h-28 flex overflow-hidden mb-6 sm:mb-8 lg:mb-10 w-full"
                 onMouseEnter={() => setIsHovered(true)}
                 onMouseLeave={() => setIsHovered(false)}
               >
@@ -275,7 +302,7 @@ const Home = () => {
                   <p
                     key={index}
                     className={`
-                absolute text-xl text-slate-200 max-w-xl mx-auto
+                absolute text-base sm:text-lg md:text-xl text-slate-200 max-w-xl mx-auto px-4 sm:px-0 w-full
                 transition-all duration-700 ease-in-out transform
                 ${
                   index === currentSlide
@@ -289,17 +316,21 @@ const Home = () => {
                 ))}
               </div>
 
-              <div className="flex flex-row gap-4">
-                <Link to="/contact-us">
-                  <Button variant="primary" size="xl">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
+                <Link to="/contact-us" className="w-full sm:w-auto">
+                  <Button
+                    variant="primary"
+                    size="xl"
+                    className="w-full sm:w-auto text-sm sm:text-base whitespace-normal sm:whitespace-nowrap px-4 sm:px-6 py-3 sm:py-4"
+                  >
                     Book a Free AI Growth Consultation
                   </Button>
                 </Link>
 
-                <a href="/services">
+                <a href="/services" className="w-full sm:w-auto">
                   <Button
                     variant="secondary"
-                    className="text-primary border-white/20 hover:bg-white/10"
+                    className="w-full sm:w-auto text-primary border-white/20 hover:bg-white/10 text-sm sm:text-base whitespace-normal sm:whitespace-nowrap px-4 sm:px-6 py-3 sm:py-4"
                     size="xl"
                   >
                     Explore Our Services
@@ -315,15 +346,15 @@ const Home = () => {
       </section>
 
       {/* Why Amica Section */}
-      <section className="py-24 bg-white dark:bg-slate-950/50">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="py-24 bg-white dark:bg-slate-950/50 w-full">
+        <div className="max-w-7xl mx-auto px-6 w-full">
           <SectionHeader
             title="Why Amica Digital Services?"
             description="We don't just follow trends; we engineer the future of digital presence using proprietary AI models and battle-tested workflows."
             className="mb-16"
           />
 
-          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
             {whyChooseUs.map((point, index) => (
               <FeaturePoint key={index} {...point} />
             ))}
@@ -333,10 +364,10 @@ const Home = () => {
 
       {/* Core Capabilities with Slider */}
       <section
-        className="py-24 bg-background-light dark:bg-background-dark"
+        className="py-24 bg-background-light dark:bg-background-dark w-full"
         id="services"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
             <SectionHeader
               align="left"
@@ -382,16 +413,16 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Services Grid with Animation */}
-          <div className="relative overflow-hidden">
+          {/* Services Grid with Animation - Now responsive for all screens */}
+          <div className="relative overflow-hidden w-full">
             <div
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out"
-              key={serviceSlide} // This forces re-render with animation
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-500 ease-in-out w-full"
+              key={serviceSlide}
             >
               {visibleServices.map((service, index) => (
                 <div
                   key={service.slug}
-                  className="animate-fadeIn"
+                  className="animate-fadeIn w-full"
                   style={{
                     animationDelay: `${index * 100}ms`,
                   }}
@@ -402,11 +433,9 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Mobile View - Show all services stacked */}
-          <div className="lg:hidden grid md:grid-cols-2 gap-8 mt-8">
-            {services.map((service, index) => (
-              <ServiceCard key={index} {...service} slug={service.slug} />
-            ))}
+          {/* Mobile view pagination info - optional */}
+          <div className="text-center mt-4 text-sm text-slate-500 md:hidden">
+            Showing {visibleServices.length} of {services.length} services
           </div>
         </div>
 
@@ -419,16 +448,248 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Case Study */}
+      <section
+        className="py-24 bg-white dark:bg-background-dark relative overflow-hidden w-full"
+        id="case-study"
+      >
+        {/* Background Decorative Elements */}
+        <div className="absolute inset-0 pointer-events-none w-full">
+          <div className="absolute top-20 left-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
+          {/* Section Header */}
+          <div className="text-center mb-16 w-full">
+            <span className="inline-block px-4 py-1.5 bg-gradient-to-r from-primary/10 to-emerald-500/10 backdrop-blur text-primary text-xs font-bold rounded-full mb-4 uppercase tracking-widest border border-primary/20">
+              <span className="flex items-center space-x-2">
+                <span className="flex h-2 w-2 rounded-full bg-primary animate-pulse"></span>
+                <span>Featured Case Study</span>
+              </span>
+            </span>
+            <p className="text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto">
+              Workforce Automation Transformation for RSM Care Links Ltd
+            </p>
+          </div>
+
+          {/* Hero Case Study Card */}
+          <Link to="/rsm-case-study" className="block group relative w-full">
+            {/* Floating Elements */}
+            <div className="absolute -top-4 -right-4 w-24 h-24 bg-emerald-500/20 rounded-full blur-2xl group-hover:bg-primary/30 transition-all duration-700"></div>
+            <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl group-hover:bg-emerald-500/30 transition-all duration-700"></div>
+
+            {/* Main Card */}
+            <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 dark:from-slate-950 dark:to-slate-900 rounded-3xl overflow-hidden transform transition-all duration-500 group-hover:scale-[1.02] group-hover:shadow-2xl shadow-xl w-full">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-10 w-full">
+                <div
+                  className="absolute inset-0 w-full"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(circle at 2px 2px, white 1px, transparent 0)",
+                    backgroundSize: "40px 40px",
+                  }}
+                ></div>
+              </div>
+
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-emerald-500/10 w-full"></div>
+
+              <div className="relative grid lg:grid-cols-2 gap-8 p-8 lg:p-12 w-full">
+                {/* Left Column - Main Content */}
+                <div className="space-y-6 w-full">
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-3">
+                    <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white text-xs font-bold px-4 py-2 rounded-full border border-white/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                      Healthcare Automation
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 bg-white/10 backdrop-blur text-white text-xs font-bold px-4 py-2 rounded-full border border-white/20">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      90-Day Transformation
+                    </span>
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="text-3xl lg:text-4xl font-black text-white leading-tight">
+                    RSM Care Links Ltd
+                  </h3>
+
+                  {/* Description */}
+                  <p className="text-slate-300 text-lg leading-relaxed">
+                    How we helped a leading home care provider build a
+                    predictable, compliant workforce pipeline — reducing admin
+                    burden by 42% within 90 days.
+                  </p>
+
+                  {/* Key Metrics - Redesigned */}
+                  <div className="grid grid-cols-2 gap-4 pt-4 w-full">
+                    <div className="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10 transform transition-all duration-300 group-hover:bg-white/10">
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span className="text-4xl font-black text-emerald-400">
+                          42
+                        </span>
+                        <span className="text-emerald-400/80 text-xl font-bold">
+                          %
+                        </span>
+                      </div>
+                      <p className="text-sm text-slate-300 font-medium leading-tight">
+                        Reduction in manual document chasing
+                      </p>
+                      <div className="mt-3 w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                        <div
+                          className="bg-emerald-400 h-full rounded-full"
+                          style={{ width: "42%" }}
+                        ></div>
+                      </div>
+                    </div>
+
+                    <div className="bg-white/5 backdrop-blur rounded-2xl p-5 border border-white/10 transform transition-all duration-300 group-hover:bg-white/10">
+                      <div className="flex items-baseline gap-1 mb-2">
+                        <span className="text-4xl font-black text-primary">
+                          37
+                        </span>
+                        <span className="text-primary/80 text-xl font-bold">
+                          %
+                        </span>
+                      </div>
+                      <p className="text-sm text-slate-300 font-medium leading-tight">
+                        Faster onboarding cycle time
+                      </p>
+                      <div className="mt-3 w-full bg-white/10 h-1.5 rounded-full overflow-hidden">
+                        <div
+                          className="bg-primary h-full rounded-full"
+                          style={{ width: "37%" }}
+                        ></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Additional Metrics - Small Preview */}
+                  <div className="flex items-center gap-4 pt-2">
+                    <div className="flex items-center gap-2">
+                      <span className="text-emerald-400 text-lg font-bold">
+                        55%
+                      </span>
+                      <span className="text-xs text-slate-400">
+                        Faster responses
+                      </span>
+                    </div>
+                    <div className="w-1 h-1 rounded-full bg-slate-600"></div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-primary text-lg font-bold">
+                        30%
+                      </span>
+                      <span className="text-xs text-slate-400">Less admin</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column - Visual Elements & CTA */}
+                <div className="relative flex flex-col items-end justify-between w-full">
+                  {/* Quote/Testimonial Preview */}
+                  <div className="relative mb-8 lg:mb-0 w-full">
+                    <div className="absolute -top-4 -left-4 text-6xl text-white/10 font-serif">
+                      "
+                    </div>
+                    <blockquote className="relative text-white/80 text-lg italic pl-6 border-l-2 border-primary">
+                      The difference is not just digital — it is operational
+                      clarity.
+                    </blockquote>
+                    <div className="mt-3 flex items-center gap-3 pl-6">
+                      <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center">
+                        <span className="material-icons text-primary text-sm">
+                          person
+                        </span>
+                      </div>
+                      <div>
+                        <p className="text-white font-semibold text-sm">
+                          A Afzal
+                        </p>
+                        <p className="text-slate-400 text-xs">
+                          Managing Director
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Button */}
+                  <div className="w-full mt-6 lg:mt-0">
+                    <div className="bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-1">
+                      <div className="flex items-center justify-between p-4">
+                        <div>
+                          <span className="block text-white font-medium">
+                            Read full case study
+                          </span>
+                          <span className="text-sm text-slate-400">
+                            5 min read
+                          </span>
+                        </div>
+                        <div className="w-14 h-14 rounded-xl bg-gradient-to-r from-primary to-emerald-500 flex items-center justify-center transform transition-all duration-300 group-hover:scale-110 group-hover:rotate-[-12deg] group-hover:shadow-lg">
+                          <span className="material-icons text-white text-2xl">
+                            arrow_forward
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Tech Stack Pills */}
+                    <div className="flex flex-wrap gap-2 mt-4 justify-end">
+                      <span className="text-xs bg-white/5 text-slate-300 px-3 py-1.5 rounded-full border border-white/10">
+                        Amica AI Suite
+                      </span>
+                      <span className="text-xs bg-white/5 text-slate-300 px-3 py-1.5 rounded-full border border-white/10">
+                        Custom CRM
+                      </span>
+                      <span className="text-xs bg-white/5 text-slate-300 px-3 py-1.5 rounded-full border border-white/10">
+                        Real-time Dashboards
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Bottom Bar with Stats */}
+              <div className="relative border-t border-white/10 bg-black/20 backdrop-blur-sm px-8 lg:px-12 py-4 w-full">
+                <div className="grid grid-cols-3 gap-4">
+                  <div>
+                    <p className="text-white/60 text-xs uppercase tracking-wider">
+                      Client
+                    </p>
+                    <p className="text-white font-semibold">
+                      RSM Care Links Ltd
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase tracking-wider">
+                      Location
+                    </p>
+                    <p className="text-white font-semibold">Manchester, UK</p>
+                  </div>
+                  <div>
+                    <p className="text-white/60 text-xs uppercase tracking-wider">
+                      Timeline
+                    </p>
+                    <p className="text-white font-semibold">3 Months</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        </div>
+      </section>
+
       {/* How We Work */}
       <section
-        className="py-24 bg-slate-950 text-white relative overflow-hidden"
+        className="py-24 bg-slate-950 text-white relative overflow-hidden w-full"
         id="process"
       >
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 w-full">
           <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(#137fec_1px,transparent_1px)] [background-size:40px_40px]"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
+        <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
           <SectionHeader
             title="How We Work"
             titleClass="text-white"
@@ -436,12 +697,12 @@ const Home = () => {
             className="mb-20 text-white"
           />
 
-          <div className="relative">
+          <div className="relative w-full">
             <div className="hidden lg:block absolute top-12 left-0 w-full h-0.5 bg-slate-800">
               <div className="absolute top-0 left-0 h-full w-1/2 bg-gradient-to-r from-primary to-accent-indigo shadow-[0_0_15px_rgba(19,127,236,0.8)]"></div>
             </div>
 
-            <div className="grid lg:grid-cols-5 gap-12 lg:gap-8">
+            <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 w-full">
               {processSteps.map((step, index) => (
                 <ProcessStep key={index} {...step} />
               ))}
@@ -449,7 +710,7 @@ const Home = () => {
             <div className="mt-12 w-full flex justify-center">
               <Link to="/contact-us">
                 <Button variant="primary" icon="arrow_forward">
-                  Start Your 30-Day Launch
+                  Book Free AI Growth Consultation
                 </Button>
               </Link>
             </div>
@@ -458,13 +719,146 @@ const Home = () => {
       </section>
 
       {/* Industry Focus */}
+      <section className="py-24 bg-background-light dark:bg-background-dark w-full">
+        <div className="max-w-7xl mx-auto px-6 w-full">
+          <SectionHeader
+            title="Trusted Across Healthcare & Professional Services"
+            description="Specialized AI solutions built for the unique challenges of care agencies, clinics, and professional service firms."
+            className="mb-16"
+          />
+
+          <div className="grid md:grid-cols-3 gap-8 w-full">
+            {/* Care Agencies Card */}
+            <div className="group relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2 w-full">
+              {/* Background Decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-emerald-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Icon with animated background */}
+              <div className="relative mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-primary/20 to-emerald-500/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <span className="material-icons text-3xl text-primary">
+                    elderly
+                  </span>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500/10 rounded-full blur-md group-hover:bg-primary/20 transition-all duration-300"></div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
+                Care Agencies
+              </h3>
+
+              {/* Description */}
+              <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                Streamline recruitment, compliance tracking, and staff
+                scheduling with AI-powered workforce automation.
+              </p>
+
+              {/* Key Challenges Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Compliance
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Staff Shortages
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Documentation
+                </span>
+              </div>
+            </div>
+
+            {/* Clinics Card */}
+            <div className="group relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-2 w-full">
+              {/* Background Decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-primary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Icon with animated background */}
+              <div className="relative mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <span className="material-icons text-3xl text-emerald-500">
+                    local_hospital
+                  </span>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-emerald-500/10 rounded-full blur-md group-hover:bg-emerald-500/20 transition-all duration-300"></div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors duration-300">
+                Clinics
+              </h3>
+
+              {/* Description */}
+              <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                Automate patient intake, appointment scheduling, and follow-ups
+                while maintaining regulatory compliance.
+              </p>
+
+              {/* Key Challenges Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Patient Flow
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Scheduling
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Records
+                </span>
+              </div>
+            </div>
+
+            {/* Professional Services Card */}
+            <div className="group relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-blue-500/30 dark:hover:border-blue-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-500/5 hover:-translate-y-2 w-full">
+              {/* Background Decoration */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-indigo-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+              {/* Icon with animated background */}
+              <div className="relative mb-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-500/20 to-indigo-500/20 flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                  <span className="material-icons text-3xl text-blue-500">
+                    business_center
+                  </span>
+                </div>
+                <div className="absolute -top-2 -right-2 w-8 h-8 bg-blue-500/10 rounded-full blur-md group-hover:bg-blue-500/20 transition-all duration-300"></div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-500 transition-colors duration-300">
+                Professional Services
+              </h3>
+
+              {/* Description */}
+              <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
+                Optimize client onboarding, document management, and billing
+                cycles with intelligent automation.
+              </p>
+
+              {/* Key Challenges Tags */}
+              <div className="flex flex-wrap gap-2 mb-6">
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Billing
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Client Intake
+                </span>
+                <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
+                  Compliance
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industry Focus */}
       <section
-        className="py-24 bg-white dark:bg-background-dark"
+        className="py-24 bg-white dark:bg-background-dark w-full"
         id="industries"
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 w-full">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
+            <div className="w-full">
               <h2 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-6">
                 Industries We Serve
               </h2>
@@ -473,7 +867,7 @@ const Home = () => {
                 nuances, jargon, and pain points of your unique market.
               </p>
 
-              <div className="grid grid-cols-2 gap-y-6">
+              <div className="grid grid-cols-2 gap-y-6 w-full">
                 {industries.map((industry, index) => (
                   <IndustryIcon key={index} {...industry} />
                 ))}
@@ -482,14 +876,14 @@ const Home = () => {
               <div className="mt-12">
                 <Link to="/contact-us">
                   <Button variant="ghost" icon="arrow_forward">
-                    Talk to an AI Growth Expert
+                    Book Free AI Growth Consultation
                   </Button>
                 </Link>
               </div>
             </div>
 
-            <div className="relative">
-              <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl p-4 overflow-hidden shadow-inner">
+            <div className="relative w-full">
+              <div className="bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 rounded-3xl p-4 overflow-hidden shadow-inner w-full">
                 <img
                   src={IndustriesWeServe}
                   alt="Industries We Serve"
@@ -503,10 +897,10 @@ const Home = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="bg-primary rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden">
-            <div className="absolute inset-0 opacity-10">
+      <section className="py-24 w-full">
+        <div className="max-w-7xl mx-auto px-6 w-full">
+          <div className="bg-primary rounded-3xl p-12 lg:p-20 text-center relative overflow-hidden w-full">
+            <div className="absolute inset-0 opacity-10 w-full">
               <svg
                 className="w-full h-full"
                 preserveAspectRatio="none"
@@ -535,7 +929,7 @@ const Home = () => {
                     variant="secondary"
                     className="bg-white text-primary hover:bg-slate-100"
                   >
-                    Book Your Free Strategy Call
+                    Book Free AI Growth Consultation
                   </Button>
                 </Link>
               </div>

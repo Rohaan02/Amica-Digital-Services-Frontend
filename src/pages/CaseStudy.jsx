@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
+import CaseStudy from "../assets/heathcare-automation case study hero section.jpg";
 
 const RSMCaseStudy = () => {
   const challenges = [
@@ -150,8 +151,18 @@ const RSMCaseStudy = () => {
 
           {/* Hero Image */}
           <div className="rounded-2xl overflow-hidden aspect-[21/9] bg-slate-200 dark:bg-slate-800 relative group">
+            {/* Background image */}
+            <div
+              className="absolute inset-0 bg-cover bg-center z-0"
+              style={{
+                backgroundImage: `url(${CaseStudy})`, // Notice the template literal
+              }}
+            ></div>
+
+            {/* Gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent z-10"></div>
-            <div className="w-full h-full bg-slate-300 dark:bg-slate-700"></div>
+
+            {/* Content */}
             <div className="absolute bottom-0 left-0 p-8 z-20">
               <p className="text-white text-xl max-w-2xl font-medium leading-relaxed">
                 How we helped a leading home care provider build a predictable,

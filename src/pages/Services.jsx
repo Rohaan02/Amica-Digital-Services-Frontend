@@ -224,7 +224,7 @@ const Services = () => {
                   {service.cta && (
                     <Link to={`/services/${service.slug}`}>
                       <Button variant="primary" size="lg">
-                        {service.cta}
+                        Learn More
                       </Button>
                     </Link>
                   )}

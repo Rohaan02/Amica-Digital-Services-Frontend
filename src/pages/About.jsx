@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import Button from "../components/Button";
 import SectionHeader from "../components/SectionHeader";
 import { Link } from "react-router-dom";
-
+import AboutUsImage from "../assets/Care Agency Recruitment & Compliance Automation System.jpg";
 const About = () => {
   const philosophyPoints = [
     {
@@ -104,7 +104,14 @@ const About = () => {
           <div className="relative">
             <div className="absolute -top-20 -right-20 w-96 h-96 bg-primary/10 rounded-full blur-3xl"></div>
             <div className="relative rounded-2xl overflow-hidden shadow-2xl border-8 border-white dark:border-slate-800">
-              <div className="w-full h-[500px] bg-slate-300 dark:bg-slate-700"></div>
+              <div
+                className="w-full h-[500px]"
+                style={{
+                  backgroundImage: `url(${AboutUsImage})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                }}
+              ></div>
             </div>
             <div className="absolute -bottom-6 -left-6 bg-white dark:bg-slate-800 p-6 rounded-xl shadow-xl max-w-xs border border-slate-100 dark:border-slate-700">
               <div className="flex items-center space-x-3 mb-3">
@@ -159,12 +166,31 @@ const About = () => {
             <div className="order-2 lg:order-1">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-4">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-64 bg-slate-300 dark:bg-slate-700"></div>
-                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-48 bg-slate-300 dark:bg-slate-700"></div>
+                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-64 bg-slate-300 dark:bg-slate-700 flex items-center justify-center">
+                    <span className="material-icons text-8xl text-primary dark:text-white/60">
+                      gavel
+                    </span>
+                  </div>
+
+                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-48 bg-slate-300 dark:bg-slate-700 flex items-center justify-center">
+                    <span className="material-icons text-6xl text-green-500 dark:text-white/60">
+                      verified
+                    </span>
+                  </div>
                 </div>
+
                 <div className="pt-12 space-y-4">
-                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-48 bg-slate-300 dark:bg-slate-700"></div>
-                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-64 bg-slate-300 dark:bg-slate-700"></div>
+                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-48 bg-slate-300 dark:bg-slate-700 flex items-center justify-center">
+                    <span className="material-icons text-6xl text-green-500 dark:text-white/60">
+                      public
+                    </span>
+                  </div>
+
+                  <div className="rounded-2xl overflow-hidden shadow-lg border-4 border-white dark:border-slate-800 h-64 bg-slate-300 dark:bg-slate-700 flex items-center justify-center">
+                    <span className="material-icons text-8xl text-primary dark:text-white/60">
+                      account_tree
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

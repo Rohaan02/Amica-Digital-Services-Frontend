@@ -127,7 +127,7 @@ const Pricing = () => {
             </Link>
             <Link to="/contact-us">
               <button className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors">
-                Talk to an Expert
+                Book Free AI Growth Consultation
               </button>
             </Link>
           </div>
