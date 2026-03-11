@@ -22,6 +22,25 @@ const IntakeForm = () => {
   const totalSteps = 5;
   const progress = (currentStep / totalSteps) * 100;
 
+  const getApiBaseUrl = () => {
+    const currentUrl = window.location.hostname;
+
+    // Check if URL contains localhost
+    if (currentUrl.includes("localhost") || currentUrl.includes("127.0.0.1")) {
+      return "http://localhost:5000";
+    }
+
+    // Check if URL contains amica domain
+    if (currentUrl.includes("amicadigitalservices.com")) {
+      return "https://amicadigitalservices.com";
+    }
+
+    // Default fallback to production
+    return "https://amicadigitalservices.com";
+  };
+
+  const API_BASE_URL = getApiBaseUrl();
+
   // Create a ref for the form container to scroll to top
   const formContainerRef = useRef(null);
 
@@ -223,20 +242,17 @@ const IntakeForm = () => {
         setQualificationStatus(status);
 
         // 1. First API call - Submit form data
-        const formResponse = await fetch(
-          "http://localhost:5000/api/send-email",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              ...values,
-              fitScore: finalScore,
-              qualificationStatus: status,
-            }),
-          }
-        );
+        const formResponse = await fetch(`${API_BASE_URL}/api/send-email`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...values,
+            fitScore: finalScore,
+            qualificationStatus: status,
+          }),
+        });
 
         const formData = await formResponse.json();
 
@@ -246,7 +262,7 @@ const IntakeForm = () => {
           // 2. Second API call - Send qualification email based on status
           if (status === "qualified") {
             const qualifiedResponse = await fetch(
-              "http://localhost:5000/api/send-qualified-email",
+              `${API_BASE_URL}/api/send-qualified-email`,
               {
                 method: "POST",
                 headers: {
@@ -266,7 +282,7 @@ const IntakeForm = () => {
             }
           } else if (status === "semi-qualified") {
             const semiResponse = await fetch(
-              "http://localhost:5000/api/send-semiqualified-email",
+              `${API_BASE_URL}/api/send-semiqualified-email`,
               {
                 method: "POST",
                 headers: {
