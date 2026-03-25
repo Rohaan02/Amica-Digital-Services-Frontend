@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
@@ -11,8 +11,42 @@ import CareAgency from "../assets/Care Agency Recruitment & Compliance Automatio
 import ResponsibleAI from "../assets/Responsible AI & Compliance.jpg";
 import SEO from "../assets/SEO & Content Systems.jpg";
 import WebCustomSoftware from "../assets/Web & Custom Software.jpg";
+import { createPortal } from "react-dom";
 
 const Services = () => {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
+  {
+    isBookingOpen &&
+      createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsBookingOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative w-[95%] h-[90%] max-w-6xl bg-white rounded-xl overflow-hidden shadow-2xl">
+            {/* Close button */}
+            <button
+              onClick={() => setIsBookingOpen(false)}
+              className="absolute top-3 right-3 z-10 bg-black/70 text-white w-8 h-8 rounded-full"
+            >
+              ✕
+            </button>
+
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/F7jbFLqYxyDInUGjcOEG"
+              className="w-full h-full border-0"
+              title="Booking Widget"
+            />
+          </div>
+        </div>,
+        document.body,
+      );
+  }
+
   const services = [
     {
       slug: "ai-lead-generation",
@@ -424,26 +458,28 @@ const Services = () => {
 
                   {/* CTA Buttons */}
                   <div className="space-y-3">
-                    <Link to="/contact-us">
-                      <Button
-                        variant="primary"
-                        className="w-full"
-                        icon="calendar_today"
-                        iconPosition="left"
-                      >
-                        Request a Technical Discovery Call
-                      </Button>
-                    </Link>
-                    <Link to="/contact-us">
-                      <Button
-                        variant="outline"
-                        className="w-full mt-2"
-                        icon="calculate"
-                        iconPosition="left"
-                      >
-                        Get a Project Cost Estimate
-                      </Button>
-                    </Link>
+                    {/* <Link to="/contact-us"> */}
+                    <Button
+                      variant="primary"
+                      className="w-full"
+                      icon="calendar_today"
+                      iconPosition="left"
+                      onClick={() => setIsBookingOpen(true)}
+                    >
+                      Request a Technical Discovery Call
+                    </Button>
+                    {/* </Link> */}
+                    {/* <Link to="/contact-us"> */}
+                    <Button
+                      variant="outline"
+                      className="w-full mt-2"
+                      icon="calculate"
+                      iconPosition="left"
+                      onClick={() => setIsBookingOpen(true)}
+                    >
+                      Get a Project Cost Estimate
+                    </Button>
+                    {/* </Link> */}
                   </div>
                 </div>
               </div>

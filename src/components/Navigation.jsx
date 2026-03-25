@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { createPortal } from "react-dom";
 
 const Navigation = ({ variant = "default", isDark = false }) => {
   const [isServicesDropdownOpen, setIsServicesDropdownOpen] = useState(false);
@@ -8,6 +9,7 @@ const Navigation = ({ variant = "default", isDark = false }) => {
   const dropdownRef = useRef(null);
   const timeoutRef = useRef(null);
   const location = useLocation();
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const navLinks = [
     { label: "Home", href: "/" },
@@ -263,11 +265,17 @@ const Navigation = ({ variant = "default", isDark = false }) => {
           </div>
 
           {/* Desktop CTA Button */}
-          <Link to="/contact-us" className="hidden lg:block">
+          {/* <Link to="/contact-us" className="hidden lg:block">
             <button className="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25">
               Book AI Growth Consultation
             </button>
-          </Link>
+          </Link> */}
+          <button
+            onClick={() => setIsBookingOpen(true)}
+            className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+          >
+            Book AI Growth Consultation
+          </button>
 
           {/* Mobile Menu Toggle Button */}
           <button
@@ -295,6 +303,34 @@ const Navigation = ({ variant = "default", isDark = false }) => {
           </button>
         </div>
       </nav>
+      {isBookingOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/70"
+              onClick={() => setIsBookingOpen(false)}
+            />
+
+            {/* Modal */}
+            <div className="relative w-[95%] h-[90%] max-w-6xl bg-white rounded-xl overflow-hidden shadow-2xl">
+              {/* Close button */}
+              <button
+                onClick={() => setIsBookingOpen(false)}
+                className="absolute top-3 right-3 z-10 bg-black/70 text-white w-8 h-8 rounded-full"
+              >
+                ✕
+              </button>
+
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/F7jbFLqYxyDInUGjcOEG"
+                className="w-full h-full border-0"
+                title="Booking Widget"
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
 
       {/* Mobile Menu Overlay - Full Screen */}
       <div

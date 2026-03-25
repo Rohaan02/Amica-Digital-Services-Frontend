@@ -16,6 +16,7 @@ import CareAgency from "../assets/Care Agency Recruitment & Compliance Automatio
 import ResponsibleAI from "../assets/Responsible AI & Compliance.jpg";
 import SEO from "../assets/SEO & Content Systems.jpg";
 import WebCustomSoftware from "../assets/Web & Custom Software.jpg";
+import { createPortal } from "react-dom";
 
 const heroImages = [
   AILeadGeneration,
@@ -31,6 +32,7 @@ const Home = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [serviceSlide, setServiceSlide] = useState(0);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const services = [
     {
@@ -317,15 +319,20 @@ const Home = () => {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
-                <Link to="/contact-us" className="w-full sm:w-auto">
+                <button
+                  onClick={() => setIsBookingOpen(true)}
+                  className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+                >
+                  {/* <Link to="/contact-us" className="w-full sm:w-auto">
                   <Button
                     variant="primary"
                     size="xl"
                     className="w-full sm:w-auto text-sm sm:text-base whitespace-normal sm:whitespace-nowrap px-4 sm:px-6 py-3 sm:py-4"
-                  >
-                    Book a Free AI Growth Consultation
-                  </Button>
-                </Link>
+                  > */}
+                  Book a Free AI Growth Consultation
+                  {/* </Button>
+                </Link> */}
+                </button>
 
                 <a href="/services" className="w-full sm:w-auto">
                   <Button
@@ -344,6 +351,34 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {isBookingOpen &&
+        createPortal(
+          <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-black/70"
+              onClick={() => setIsBookingOpen(false)}
+            />
+
+            {/* Modal */}
+            <div className="relative w-[95%] h-[90%] max-w-6xl bg-white rounded-xl overflow-hidden shadow-2xl">
+              {/* Close button */}
+              <button
+                onClick={() => setIsBookingOpen(false)}
+                className="absolute top-3 right-3 z-10 bg-black/70 text-white w-8 h-8 rounded-full"
+              >
+                ✕
+              </button>
+
+              <iframe
+                src="https://api.leadconnectorhq.com/widget/booking/F7jbFLqYxyDInUGjcOEG"
+                className="w-full h-full border-0"
+                title="Booking Widget"
+              />
+            </div>
+          </div>,
+          document.body,
+        )}
 
       {/* Why Amica Section */}
       <section className="py-24 bg-white dark:bg-slate-950/50 w-full">
@@ -708,11 +743,16 @@ const Home = () => {
               ))}
             </div>
             <div className="mt-12 w-full flex justify-center">
-              <Link to="/contact-us">
-                <Button variant="primary" icon="arrow_forward">
-                  Book Free AI Growth Consultation
-                </Button>
-              </Link>
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+              >
+                {/* <Link to="/contact-us">
+                <Button variant="primary" icon="arrow_forward"> */}
+                Book Free AI Growth Consultation
+                {/* </Button>
+              </Link> */}
+              </button>
             </div>
           </div>
         </div>
@@ -874,11 +914,16 @@ const Home = () => {
               </div>
 
               <div className="mt-12">
-                <Link to="/contact-us">
-                  <Button variant="ghost" icon="arrow_forward">
-                    Book Free AI Growth Consultation
-                  </Button>
-                </Link>
+                <button
+                  onClick={() => setIsBookingOpen(true)}
+                  className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+                >
+                  {/* <Link to="/contact-us">
+                  <Button variant="ghost" icon="arrow_forward"> */}
+                  Book Free AI Growth Consultation
+                  {/* </Button>
+                </Link> */}
+                </button>
               </div>
             </div>
 
@@ -923,15 +968,20 @@ const Home = () => {
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                <Link to="/contact-us">
+                {/* <Link to="/contact-us">
                   <Button
                     size="xl"
                     variant="secondary"
                     className="bg-white text-primary hover:bg-slate-100"
-                  >
-                    Book Free AI Growth Consultation
-                  </Button>
-                </Link>
+                  > */}
+                <button
+                  onClick={() => setIsBookingOpen(true)}
+                  className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+                >
+                  Book Free AI Growth Consultation
+                  {/* </Button>
+                </Link> */}
+                </button>
               </div>
             </div>
           </div>

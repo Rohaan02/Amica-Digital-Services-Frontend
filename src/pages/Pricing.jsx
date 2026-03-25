@@ -4,6 +4,7 @@ import Footer from "../components/Footer";
 import PricingCard from "../components/PricingCard";
 import SectionHeader from "../components/SectionHeader";
 import { Link } from "react-router-dom";
+import { createPortal } from "react-dom";
 
 const Pricing = () => {
   const pricingPlans = [
@@ -67,6 +68,37 @@ const Pricing = () => {
     { icon: "psychology", label: "AI Native Team" },
   ];
 
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  {
+    isBookingOpen &&
+      createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsBookingOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative w-[95%] h-[90%] max-w-6xl bg-white rounded-xl overflow-hidden shadow-2xl">
+            {/* Close button */}
+            <button
+              onClick={() => setIsBookingOpen(false)}
+              className="absolute top-3 right-3 z-10 bg-black/70 text-white w-8 h-8 rounded-full"
+            >
+              ✕
+            </button>
+
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/F7jbFLqYxyDInUGjcOEG"
+              className="w-full h-full border-0"
+              title="Booking Widget"
+            />
+          </div>
+        </div>,
+        document.body,
+      );
+  }
   return (
     <div className="bg-background-light dark:bg-background-dark">
       <Navigation />
@@ -125,11 +157,14 @@ const Pricing = () => {
                 Get Started Today
               </button>
             </Link>
-            <Link to="/contact-us">
-              <button className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors">
-                Book Free AI Growth Consultation
-              </button>
-            </Link>
+            {/* <Link to="/contact-us"> */}
+            <button
+              onClick={() => setIsBookingOpen(true)}
+              className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors"
+            >
+              Book Free AI Growth Consultation
+            </button>
+            {/* </Link> */}
           </div>
         </div>
       </section>

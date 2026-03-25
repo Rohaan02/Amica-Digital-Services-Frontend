@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
 import CaseStudy from "../assets/heathcare-automation case study hero section.jpg";
+import { createPortal } from "react-dom";
 
 const RSMCaseStudy = () => {
   const challenges = [
@@ -110,6 +111,38 @@ const RSMCaseStudy = () => {
       bar: 75,
     },
   ];
+
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+  {
+    isBookingOpen &&
+      createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/70"
+            onClick={() => setIsBookingOpen(false)}
+          />
+
+          {/* Modal */}
+          <div className="relative w-[95%] h-[90%] max-w-6xl bg-white rounded-xl overflow-hidden shadow-2xl">
+            {/* Close button */}
+            <button
+              onClick={() => setIsBookingOpen(false)}
+              className="absolute top-3 right-3 z-10 bg-black/70 text-white w-8 h-8 rounded-full"
+            >
+              ✕
+            </button>
+
+            <iframe
+              src="https://api.leadconnectorhq.com/widget/booking/F7jbFLqYxyDInUGjcOEG"
+              className="w-full h-full border-0"
+              title="Booking Widget"
+            />
+          </div>
+        </div>,
+        document.body,
+      );
+  }
 
   return (
     <div className="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white">
@@ -254,11 +287,16 @@ const RSMCaseStudy = () => {
                 <p className="text-slate-500 text-sm mb-4">
                   Want similar results for your business?
                 </p>
-                <Link to="/contact">
-                  <Button variant="primary" className="w-full">
-                    Book a Consultation
-                  </Button>
-                </Link>
+                {/* <Link to="/contact">
+                  <Button variant="primary" className="w-full"> */}
+                <button
+                  onClick={() => setIsBookingOpen(true)}
+                  className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+                >
+                  Book a Consultation
+                  {/* </Button>
+                </Link> */}
+                </button>
               </div>
             </div>
           </aside>
@@ -452,16 +490,21 @@ const RSMCaseStudy = () => {
               and scale your operations.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Link to="/contact">
+              {/* <Link to="/contact">
                 <Button
                   variant="primary"
                   size="lg"
                   icon="calendar_today"
                   iconPosition="left"
-                >
-                  Book a Consultation
-                </Button>
-              </Link>
+                > */}
+              <button
+                onClick={() => setIsBookingOpen(true)}
+                className="hidden lg:block bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/25"
+              >
+                Book a Consultation
+                {/* </Button>
+              </Link> */}
+              </button>
               <Link to="/case-studies">
                 <Button variant="secondary" size="lg">
                   View Other Case Studies
