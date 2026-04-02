@@ -12,6 +12,7 @@ const PricingCard = ({
   badgeText = null,
   buttonText = "Get Started",
   buttonVariant = "outline",
+  link,
 }) => {
   const cardClass = highlighted
     ? "relative bg-white dark:bg-slate-900 border-2 border-primary p-8 rounded-xl pricing-card-hover flex flex-col shadow-2xl shadow-primary/10 transform scale-105 z-10"
@@ -60,14 +61,14 @@ const PricingCard = ({
           </div>
         ))}
       </div>
-      <Link to="/contact-us">
+      <a href={link} target="_blank" rel="noopener noreferrer">
         <Button
           variant={highlighted ? "primary" : buttonVariant}
           className="w-full"
         >
           {buttonText}
         </Button>
-      </Link>
+      </a>
     </div>
   );
 };

@@ -13,6 +13,7 @@ const Pricing = () => {
       description: "For businesses starting digital growth",
       price: "£199",
       setupFee: "£290",
+      link: "https://payment.amicadigitalservices.com/foundation",
       features: [
         "Website (one page) or landing page",
         "Basic SEO setup",
@@ -28,6 +29,7 @@ const Pricing = () => {
       description: "For businesses that want leads & momentum",
       price: "£299",
       setupFee: "£990",
+      link: "https://payment.amicadigitalservices.com/growth-engine",
       features: [
         "Everything in Foundation, plus:",
         "AI-assisted lead generation",
@@ -48,6 +50,7 @@ const Pricing = () => {
         "For healthcare, law firms and recruitment agencies — regulated & scaling businesses",
       price: "£490",
       setupFee: "£1,950",
+      link: "https://payment.amicadigitalservices.com/ai-automation-compliance",
       features: [
         "Everything in Growth Engine, plus:",
         "AI virtual assistants & agents",
