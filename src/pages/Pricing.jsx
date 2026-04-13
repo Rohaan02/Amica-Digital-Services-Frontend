@@ -10,34 +10,38 @@ const Pricing = () => {
   const pricingPlans = [
     {
       title: "Foundation",
-      description: "For businesses starting digital growth",
+      description: "Get Started with Smart Systems",
       price: "£199",
-      setupFee: "£290",
+      setupFee: "£200 setup (free with 6-month commitment)",
       link: "https://payment.amicadigitalservices.com/foundation",
       features: [
-        "Website (one page) or landing page",
-        "Basic SEO setup",
-        "Google Business Profile optimisation",
-        "Analytics & tracking",
-        "Consent & compliance tools",
+        "Lead capture forms (website & social)",
+        "Basic email automation",
+        "Enquiry notifications & tracking",
+        "Centralised contact database & lead tracking",
+        "Basic pipeline visibility",
+        "Conversion-focused website improvements",
+        "Basic landing page setup",
+        "4 branded social media posts / month",
       ],
       buttonText: "Get Started",
       buttonVariant: "outline",
     },
     {
-      title: "Growth Engine",
-      description: "For businesses that want leads & momentum",
-      price: "£299",
-      setupFee: "£990",
+      title: "Growth",
+      description: "Automation + Lead Generation System",
+      price: "£490",
+      setupFee: "£990 setup (free with 12-month agreement)",
       link: "https://payment.amicadigitalservices.com/growth-engine",
       features: [
         "Everything in Foundation, plus:",
-        "AI-assisted lead generation",
-        "CRM & pipeline automation",
-        "SEO content framework",
-        "Social media systems",
-        "Automated follow-ups",
-        "Monthly reporting",
+        "Multi-step workflow & WhatsApp automation",
+        "Automated follow-ups & appointment booking",
+        "Full CRM pipeline with team access",
+        "Funnel setup with lead routing & qualification",
+        "8 social media posts / month",
+        "On-page SEO & local keyword targeting",
+        "Technical SEO improvements",
       ],
       highlighted: true,
       badgeText: "Most Popular",
@@ -45,19 +49,20 @@ const Pricing = () => {
       buttonVariant: "primary",
     },
     {
-      title: "AI Automation & Compliance",
-      description:
-        "For healthcare, law firms and recruitment agencies — regulated & scaling businesses",
-      price: "£490",
-      setupFee: "£1,950",
+      title: "Pro",
+      description: "Full AI Growth & Automation System",
+      price: "£990",
+      setupFee: "£1,950 setup (free with 12-month agreement)",
       link: "https://payment.amicadigitalservices.com/ai-automation-compliance",
       features: [
-        "Everything in Growth Engine, plus:",
-        "AI virtual assistants & agents",
-        "Advanced automation workflows",
-        "AI governance & usage policy",
-        "Security & access controls",
-        "Priority support & strategy reviews",
+        "Everything in Growth, plus:",
+        "Advanced workflows, sales pipelines & API integrations",
+        "Lead scoring, qualification & advanced dashboards",
+        "AI chatbot, WhatsApp assistant & lead qualification AI",
+        "Advanced SEO content strategy & ranking optimisation",
+        "12 posts / month + Reels / short-form video",
+        "LinkedIn profile optimisation & B2B outreach",
+        "YouTube channel optimisation (optional)",
       ],
       buttonText: "Book AI Strategy Call",
       buttonVariant: "outline",
@@ -69,6 +74,13 @@ const Pricing = () => {
     { icon: "update", label: "Cancel Anytime" },
     { icon: "rocket_launch", label: "Fast Deployment" },
     { icon: "psychology", label: "AI Native Team" },
+  ];
+
+  const industrySystems = [
+    { icon: "home_health", label: "Home Care Agencies" },
+    { icon: "local_hospital", label: "Clinics & Healthcare" },
+    { icon: "apartment", label: "Estate Agents & Property" },
+    { icon: "work", label: "Recruitment Agencies" },
   ];
 
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -102,6 +114,7 @@ const Pricing = () => {
         document.body,
       );
   }
+
   return (
     <div className="bg-background-light dark:bg-background-dark">
       <Navigation />
@@ -110,15 +123,17 @@ const Pricing = () => {
       <header className="py-20 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <SectionHeader
-            badge="Simple & Transparent"
+            badge="Our Growth Systems"
             title={
               <>
-                Transparent Pricing.
+                AI-Powered Growth, Automation &amp;
                 <br />
-                <span className="text-primary">Scalable Growth.</span>
+                <span className="text-primary">
+                  Digital Systems for Modern Businesses
+                </span>
               </>
             }
-            description="Choose the level that fits your ambition."
+            description="We don't just offer marketing. We build intelligent systems that help you generate more leads, automate operations, convert enquiries faster, and scale without increasing workload."
           />
         </div>
       </header>
@@ -144,30 +159,60 @@ const Pricing = () => {
         </div>
       </section>
 
+      {/* Industry-Specific Systems */}
+      <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-extrabold mb-4">
+            ⚙️ Industry-Specific Systems Available
+          </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-400 mb-12">
+            We also build tailored systems for regulated and specialist
+            industries.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {industrySystems.map((item, index) => (
+              <div
+                key={index}
+                className="flex flex-col items-center gap-3 p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700"
+              >
+                <span className="material-icons text-3xl text-primary">
+                  {item.icon}
+                </span>
+                <span className="font-semibold text-sm text-center">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Footer CTA */}
       <section className="bg-primary py-24 px-6 text-center">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-extrabold text-white mb-8">
-            Ready to future-proof your digital growth?
+            Ready to Build a Smarter Business?
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
-            Join 200+ businesses scaling their operations with Amica's
-            intelligent digital frameworks.
+            Book a free consultation and discover how automation can transform
+            your operations.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact-us">
-              <button className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors shadow-xl">
-                Get Started Today
-              </button>
-            </Link>
-            {/* <Link to="/contact-us"> */}
             <button
               onClick={() => setIsBookingOpen(true)}
-              className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors"
+              className="bg-white text-primary px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-50 transition-colors shadow-xl"
             >
-              Book Free AI Growth Consultation
+              Book Free Strategy Call
             </button>
-            {/* </Link> */}
+            <a
+              href="https://wa.me/447808014132"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors flex items-center gap-2"
+            >
+              <span className="material-icons text-xl">chat</span>
+              Speak on WhatsApp
+            </a>
           </div>
         </div>
       </section>

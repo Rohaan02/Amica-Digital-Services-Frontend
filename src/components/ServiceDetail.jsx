@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
 import Button from "../components/Button";
+import CareAgencyLeadForm from "../components/CareAgencyLeadForm";
 import servicesData from "../helpers/servicesData";
 
 const ServiceDetail = () => {
@@ -78,17 +79,32 @@ const ServiceDetail = () => {
                     </Button>
                   </Link>
 
-                  {service.secondaryCTA && (
-                    <Link to="/contact-us">
-                      <Button
-                        variant="secondary"
-                        className="text-primary"
-                        size="xl"
+                  {service.secondaryCTA &&
+                    (service.secondaryCTA.toLowerCase().includes("whatsapp") ? (
+                      <a
+                        href={service.secondaryCTALink}
+                        target="_blank"
+                        rel="noopener noreferrer"
                       >
-                        {service.secondaryCTA}
-                      </Button>
-                    </Link>
-                  )}
+                        <Button
+                          variant="secondary"
+                          className="text-primary"
+                          size="xl"
+                        >
+                          {service.secondaryCTA}
+                        </Button>
+                      </a>
+                    ) : (
+                      <Link to="/contact-us">
+                        <Button
+                          variant="secondary"
+                          className="text-primary"
+                          size="xl"
+                        >
+                          {service.secondaryCTA}
+                        </Button>
+                      </Link>
+                    ))}
                 </div>
               </div>
 
@@ -97,6 +113,29 @@ const ServiceDetail = () => {
             </div>
           </div>
         </section>
+
+        {/* Trust Bar Section */}
+        {service.trustBar && (
+          <section className="py-12 bg-gradient-to-r from-primary/5 to-blue-50 dark:from-primary/10 dark:to-blue-900/10 border-y border-primary/10">
+            <div className="max-w-5xl mx-auto px-6">
+              <h3 className="text-sm font-bold uppercase tracking-widest text-primary mb-6 text-center">
+                {service.trustBar.title}
+              </h3>
+              <div className="flex flex-wrap justify-center gap-6">
+                {service.trustBar.items.map((item, index) => (
+                  <div key={index} className="flex items-center gap-2">
+                    <span className="material-icons text-primary text-sm">
+                      check_circle
+                    </span>
+                    <span className="font-medium text-slate-700 dark:text-slate-300">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* The Problem Section (Care Agency specific) */}
         {service.theProblem && (
@@ -113,7 +152,7 @@ const ServiceDetail = () => {
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 {service.theProblem.title}
               </h3>
-              <ul className="space-y-3 mb-6">
+              <ul className="space-y-3 mb-8">
                 {service.theProblem.issues.map((issue, index) => (
                   <li key={index} className="flex items-start gap-3">
                     <span className="material-icons text-red-500 text-sm mt-1">
@@ -125,6 +164,27 @@ const ServiceDetail = () => {
                   </li>
                 ))}
               </ul>
+
+              {service.theProblem.resultsList && (
+                <>
+                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-3">
+                    The result?
+                  </p>
+                  <ul className="space-y-2 mb-6">
+                    {service.theProblem.resultsList.map((result, index) => (
+                      <li key={index} className="flex items-start gap-3">
+                        <span className="material-icons text-red-500 text-sm mt-1">
+                          trending_down
+                        </span>
+                        <span className="text-slate-700 dark:text-slate-300">
+                          {result}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+
               <p className="text-lg font-bold text-slate-900 dark:text-white italic">
                 {service.theProblem.conclusion}
               </p>
@@ -348,7 +408,7 @@ const ServiceDetail = () => {
               <p className="text-lg text-slate-600 dark:text-slate-400 mb-6">
                 {service.whoIsThisFor.subtitle}
               </p>
-              <ul className="grid md:grid-cols-2 gap-4">
+              <ul className="grid md:grid-cols-2 gap-4 mb-8">
                 {service.whoIsThisFor.points.map((point, index) => (
                   <li key={index} className="flex items-center gap-3">
                     <span className="material-icons text-primary text-sm">
@@ -360,6 +420,11 @@ const ServiceDetail = () => {
                   </li>
                 ))}
               </ul>
+              {service.whoIsThisFor.conclusion && (
+                <p className="text-slate-700 dark:text-slate-300 italic">
+                  {service.whoIsThisFor.conclusion}
+                </p>
+              )}
             </div>
           </section>
         )}
@@ -564,6 +629,48 @@ const ServiceDetail = () => {
                     {service.additionalNote}
                   </p>
                 </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Lead Capture Form (Care Agency specific) */}
+        {slug === "care-agency-recruitment" && <CareAgencyLeadForm />}
+
+        {/* FAQ Section */}
+        {service.faqs && service.faqs.length > 0 && (
+          <section className="py-20 bg-slate-50 dark:bg-slate-900/30">
+            <div className="max-w-4xl mx-auto px-6">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400">
+                  Everything you need to know about our service
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {service.faqs.map((faq, index) => (
+                  <div
+                    key={index}
+                    className="bg-white dark:bg-slate-800 rounded-lg p-6 border border-slate-200 dark:border-slate-700 hover:border-primary/30 transition-all"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <span className="material-icons text-sm">help</span>
+                      </div>
+                      <div className="flex-grow">
+                        <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                          {faq.question}
+                        </h3>
+                        <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </section>

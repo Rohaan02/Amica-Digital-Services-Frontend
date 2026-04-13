@@ -464,133 +464,208 @@ const servicesData = {
     badge: "Care Agency Recruitment & Compliance Automation System",
     tagline: (
       <>
-        Stop Losing Time <span className="text-primary">Chasing Documents</span>{" "}
-        and Delaying Onboarding
+        Stop Losing Time on Recruitment Admin, Compliance Chasing and{" "}
+        <span className="text-primary">Slow Onboarding</span>
       </>
     ),
     description: (
       <>
-        Reduce compliance admin.
-        <br />
-        Automate recruitment workflows.
-        <br />
-        Build a predictable pipeline of fully compliant staff.
+        We help UK care agencies automate recruitment, compliance workflows and
+        staff onboarding — so you can prepare fully compliant carers faster,
+        reduce admin pressure and improve operational continuity.
         <br />
         <br />
-        Built specifically for UK domiciliary care and supported living
-        providers.
+        Built for domiciliary care, supported living and care providers under
+        real operational pressure.
       </>
     ),
     heroImage: CareAgency,
-    theProblem: {
-      title: "If you run a care agency in 2026, you already know:",
-      issues: [
-        "Applications come from Indeed, CV Library, Facebook, Google, word of mouth",
-        "Documents are missing",
-        "Staff take weeks to become fully compliant",
-        "Managers spend hours chasing paperwork",
-        "Service users become available but staff are not ready",
-        "Or staff are ready and demand slows",
+    trustBar: {
+      title: "Designed for UK care providers who need:",
+      items: [
+        "Faster onboarding",
+        "Better compliance visibility",
+        "Less document chasing",
+        "More staff ready to work",
+        "Fewer delays between recruitment and deployment",
       ],
-      conclusion:
-        "This is not a recruitment problem. It is a workflow problem.",
+    },
+    theProblem: {
+      title: "If you run a care agency, you already know the pain",
+      issues: [
+        "Applications come from Indeed, CV Library, Facebook, Website, Word of mouth",
+        "Your team has to chase missing documents",
+        "Check right to work",
+        "Track training",
+        "Verify references",
+        "Organise compliance stages",
+        "Keep managers updated",
+        "Try to get staff ready before service users are waiting",
+      ],
+      resultsList: [
+        "Onboarding delays",
+        "Admin overload",
+        "Missed opportunities",
+        "Staff not ready when demand arrives",
+        "Internal teams stretched too thin",
+      ],
+      conclusion: "This is not just a staffing issue. It is a workflow issue.",
     },
     systemOverview: {
       title: "The Care Agency Automation System",
       description:
-        "We install a structured, automated recruitment and compliance system in your business within 14 days.",
+        "We install a structured recruitment and compliance automation system that helps your agency move applicants from enquiry to work-ready faster and with less manual effort.",
       benefits: [
-        "No more fragmented intake.",
-        "No more manual chasing chaos.",
-        "No more guessing who is compliant.",
+        "Centralises all applications",
+        "Automates document chasing",
+        "Tracks onboarding stages",
+        "Improves staff readiness visibility",
+        "Reduces admin workload",
       ],
     },
     features: [
       {
         icon: "input",
         title: "Centralised Applicant Intake",
-        description: "All applications from:",
+        shortDescription:
+          "Collect applications from multiple channels into one organised pipeline.",
+        description:
+          "Multi-source application tracking and candidate pipeline organisation.",
         details: [
-          "Indeed",
-          "CV Library",
-          "Facebook",
-          "Website",
-          "Word of mouth",
-        ],
-        shortDescription: "Flow into one structured pipeline.",
-      },
-      {
-        icon: "verified_user",
-        title: "Automated Compliance Workflow",
-        shortDescription: (
-          <>
-            Managers see exactly who is:
-            <div className="pl-6">
-              <li>Ready</li>
-              <li>Missing documents</li>
-              <li>Awaiting training</li>
-              <li>Fully compliant</li>
-            </div>
-          </>
-        ),
-        details: [
-          "Document upload links",
-          "Automated reminders",
-          "Stage tracking",
-          "Role-based onboarding (Care Worker vs Senior)",
-          "Compliance status dashboard",
+          "Multi-channel collection",
+          "Candidate pipeline organisation",
+          "Centralised applicant capture",
         ],
       },
       {
-        icon: "speed",
-        title: "Faster Onboarding",
-        description: (
-          <>
-            Reduce onboarding cycle time by up to 30–40 percent. <br />
-            <br />
-            Automated reminders mean: <br />
-            Less chasing <br />
-            Less admin <br />
-            Less delay
-          </>
-        ),
-        details: [],
+        icon: "email",
+        title: "Automated Document Chasing",
+        description:
+          "Send reminders automatically for missing compliance documents.",
+        details: [
+          "Missing document reminders",
+          "Automated follow-ups",
+          "Status tracking",
+        ],
+      },
+      {
+        icon: "assignment",
+        title: "Tracks Onboarding Stages",
+        description: "See exactly where each applicant is in the process.",
+        details: [
+          "Stage-based onboarding",
+          "Role-based workflow",
+          "Progress tracking",
+        ],
+      },
+      {
+        icon: "visibility",
+        title: "Staff Readiness Visibility",
+        shortDescription:
+          "Know who is ready, who is waiting, and what is outstanding.",
+        description:
+          "Improve visibility across your entire onboarding pipeline.",
+        details: [
+          "Ready to deploy",
+          "Awaiting documents",
+          "In progress",
+          "New applicants",
+        ],
       },
       {
         icon: "dashboard",
-        title: "Staff Readiness Dashboard",
-        description: "See your workforce pipeline clearly.",
+        title: "White Label CRM",
+        description:
+          "Lead and candidate pipelines in one place with full team visibility.",
         details: [
-          "In application",
-          "In compliance",
-          "Ready to deploy",
-          "Expiring documents",
+          "Pipeline organisation",
+          "Team visibility",
+          "Notes and progress tracking",
+          "Custom stages",
         ],
-        shortDescription: "No more spreadsheet confusion.",
+      },
+      {
+        icon: "notifications_active",
+        title: "Email and WhatsApp Automation",
+        description:
+          "Keep candidates and team informed with automated messaging.",
+        details: [
+          "Instant acknowledgements",
+          "Automated follow-ups",
+          "Internal notifications",
+        ],
+      },
+      {
+        icon: "bar_chart",
+        title: "Dashboard Visibility",
+        description: "Real-time overview of your entire recruitment pipeline.",
+        details: [
+          "New applicants overview",
+          "In progress tracking",
+          "Document status",
+          "Ready to deploy count",
+        ],
       },
     ],
+    whatWeOffer: {
+      title: "What's Included",
+      subtitle: "Your Care Agency Automation System includes:",
+      items: [
+        "Recruitment Intake Automation",
+        "Compliance Workflow Automation",
+        "White Label CRM",
+        "Email and WhatsApp Automation",
+        "Dashboard Visibility",
+        "Workflow setup and configuration",
+        "Onboarding pipeline design",
+        "Support and optimisation",
+      ],
+    },
     whyDifferent: {
-      title: "Why We Are Different",
-      intro: "We are not generic software sellers. We understand:",
+      title: "Why This Matters",
+      intro:
+        "We understand the care sector because we come from it. This is not generic automation.",
       points: [
-        "CQC expectations",
-        "Compliance risk",
         "Care recruitment pressure",
-        "Operational gaps between service user demand and staff availability",
+        "Onboarding delays",
+        "Compliance risk",
+        "CQC expectations",
+        "Staff shortages",
+        "Operational gap between available packages and ready-to-work staff",
       ],
       conclusion:
-        "This system was built by operators who understand the care sector — not marketers.",
+        "We build systems around real sector challenges — not generic software templates.",
     },
     results: {
-      title: "Results You Can Expect",
-      subtitle: "Within 90 days most agencies experience:",
+      title: "What Changes After Implementation?",
+      subtitle:
+        "Instead of spreadsheets, manual chasing and uncertainty, you get:",
       metrics: [
-        "30–50 percent reduction in document chasing",
-        "Faster compliance completion",
+        "One structured system",
+        "Faster communication",
+        "Clearer compliance stages",
+        "Improved onboarding flow",
+        "Better workforce visibility",
+        "Reduced admin time",
+        "Faster onboarding cycles",
         "Improved recruitment visibility",
-        "Reduced admin overload",
-        "Better alignment between staff availability and service user demand",
+        "Better alignment between staff supply and service demand",
+        "Less pressure on managers",
       ],
+    },
+    whoIsThisFor: {
+      title: "Who This Is For",
+      subtitle: "This is ideal for:",
+      points: [
+        "Domiciliary care agencies",
+        "Supported living providers",
+        "Home care businesses",
+        "Care providers recruiting regularly",
+        "Agencies struggling with onboarding delays",
+        "Managers overloaded with compliance admin",
+      ],
+      conclusion:
+        "If your agency is onboarding carers every month and your process still depends heavily on manual admin, this system is for you.",
     },
     pricingPackages: [
       {
@@ -598,9 +673,14 @@ const servicesData = {
         price: "£490",
         priceUnit: "per month",
         features: [
-          "12-month agreement",
           "No setup fee",
-          "Best for agencies serious about long-term operational stability",
+          "12-month agreement",
+          "Best for agencies serious about improving systems and operational stability",
+          "Includes workflow setup",
+          "CRM configuration",
+          "Automation build",
+          "Onboarding pipeline design",
+          "Support and optimisation",
         ],
         highlighted: true,
       },
@@ -609,33 +689,52 @@ const servicesData = {
         price: "£490",
         priceUnit: "per month",
         features: [
-          "Cancel anytime",
           "£990 setup fee",
-          "Ideal if you prefer flexibility",
+          "Cancel anytime",
+          "Best for agencies that want flexibility",
+          "Includes workflow setup",
+          "CRM configuration",
+          "Automation build",
+          "Onboarding pipeline design",
+          "Support and optimisation",
         ],
       },
     ],
     pricingNote: "No hidden fees. No complicated licensing.",
-    whoIsThisFor: {
-      title: "Who This Is For",
-      subtitle: "This system is ideal for:",
-      points: [
-        "Domiciliary care agencies",
-        "Supported living providers",
-        "Agencies onboarding 5+ carers per month",
-        "Providers overwhelmed with compliance admin",
-      ],
-    },
     primaryCTA: "Book My Free Workflow Review",
-    secondaryCTA: null,
+    secondaryCTA: "Speak on WhatsApp",
+    secondaryCTALink: "https://wa.me/447808014132",
     finalCTAMessage: (
       <>
-        Ready to reduce onboarding delays and compliance pressure? <br />
-        Book a free 15-minute workflow review. <br />
-        We will assess your current process and show you exactly where
-        automation will save time.
+        Ready to reduce onboarding delays and compliance pressure?
+        <br />
+        <br />
+        Book a free workflow review and we will show you how your agency can
+        automate recruitment and staff onboarding more effectively.
       </>
     ),
+    faqs: [
+      {
+        question: "How long does implementation take?",
+        answer:
+          "Most systems can be configured and launched within 14 days, depending on complexity.",
+      },
+      {
+        question: "Is this suitable for small care agencies?",
+        answer:
+          "Yes. It works especially well for small to medium agencies that need structure without hiring more admin staff.",
+      },
+      {
+        question: "Do you replace our current software?",
+        answer:
+          "Not always. In many cases we can improve your workflow by integrating with existing tools or centralising key stages into one simpler system.",
+      },
+      {
+        question: "Can this be adapted to our onboarding process?",
+        answer:
+          "Yes. The workflows can be tailored to your agency's recruitment and compliance steps.",
+      },
+    ],
   },
 };
 
