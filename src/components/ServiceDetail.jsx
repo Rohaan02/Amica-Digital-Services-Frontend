@@ -252,6 +252,9 @@ const ServiceDetail = () => {
           </section>
         )}
 
+        {/* Lead Capture Form (Care Agency specific) */}
+        {slug === "care-agency-recruitment" && <CareAgencyLeadForm />}
+
         {/* Feature Grid */}
         <section className="bg-white dark:bg-background-dark/50 py-24">
           <div className="max-w-7xl mx-auto px-6">
@@ -633,9 +636,6 @@ const ServiceDetail = () => {
             </div>
           </section>
         )}
-
-        {/* Lead Capture Form (Care Agency specific) */}
-        {slug === "care-agency-recruitment" && <CareAgencyLeadForm />}
 
         {/* FAQ Section */}
         {service.faqs && service.faqs.length > 0 && (

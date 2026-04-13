@@ -71,7 +71,7 @@ const CareAgencyLeadForm = () => {
   };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-primary/5 to-blue-50 dark:from-primary/10 dark:to-blue-900/10">
+    <section className="py-20 bg-white from-primary/5 to-blue-50 dark:from-primary/10 dark:to-blue-900/10">
       <div className="max-w-2xl mx-auto px-6">
         {/* Form Header */}
         <div className="text-center mb-12">
