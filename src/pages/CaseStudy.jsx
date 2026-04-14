@@ -296,7 +296,7 @@ const RSMCaseStudy = () => {
               Book a Free Workflow Review
             </button>
             <a
-              href="https://wa.me/447808014132"
+              href="https://wa.me/447446981768"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-colors"
@@ -1089,7 +1089,7 @@ const RSMCaseStudy = () => {
                 Book a Free Workflow Review
               </button>
               <a
-                href="https://wa.me/447808014132"
+                href="https://wa.me/447446981768"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white px-10 py-4 rounded-xl font-bold text-lg hover:border-primary transition-colors"

@@ -17,7 +17,7 @@ const IntakeForm = () => {
   const [fitScore, setFitScore] = useState(0);
   const [qualificationStatus, setQualificationStatus] = useState(null);
   const [validationSchema, setValidationSchema] = useState(
-    "step1ValidationSchema"
+    "step1ValidationSchema",
   );
   const totalSteps = 5;
   const progress = (currentStep / totalSteps) * 100;
@@ -89,7 +89,7 @@ const IntakeForm = () => {
       .max(2, "You can select up to 2 goals"),
     servicesInterested: Yup.array().min(
       1,
-      "Please select at least one service"
+      "Please select at least one service",
     ),
   });
 
@@ -168,14 +168,14 @@ const IntakeForm = () => {
 
   const step5ValidationSchema = Yup.object({
     startTimeline: Yup.string().required(
-      "Please select when you want to start"
+      "Please select when you want to start",
     ),
     monthlyBudget: Yup.string().required("Please select monthly budget"),
     setupBudget: Yup.string().required("Please select setup budget"),
     regulated: Yup.string().required("Please select industry type"),
     consentContact: Yup.boolean().oneOf(
       [true],
-      "You must agree to be contacted"
+      "You must agree to be contacted",
     ),
   });
 
@@ -273,7 +273,7 @@ const IntakeForm = () => {
                   fullName: values.fullName,
                   leadId: formData.leadId,
                 }),
-              }
+              },
             );
 
             const qualifiedData = await qualifiedResponse.json();
@@ -293,7 +293,7 @@ const IntakeForm = () => {
                   fullName: values.fullName,
                   leadId: formData.leadId,
                 }),
-              }
+              },
             );
 
             const semiData = await semiResponse.json();
@@ -323,13 +323,13 @@ const IntakeForm = () => {
 
   // Check which services require Screen 4
   const needsWebsiteQuestions = getNeedsWebsiteQuestions(
-    formik.values.servicesInterested
+    formik.values.servicesInterested,
   );
   const needsAIQuestions = getNeedsAIQuestions(
-    formik.values.servicesInterested
+    formik.values.servicesInterested,
   );
   const needsAutomationQuestions = getNeedsAutomationQuestions(
-    formik.values.servicesInterested
+    formik.values.servicesInterested,
   );
 
   // Update validation schema when step changes or service selections change
@@ -347,7 +347,7 @@ const IntakeForm = () => {
         break;
       case 4:
         newSchema = createStep4ValidationSchema(
-          formik.values.servicesInterested
+          formik.values.servicesInterested,
         );
         break;
       case 5:
@@ -498,7 +498,7 @@ const IntakeForm = () => {
     formik.validateForm().then((errors) => {
       // Check if there are any errors for the fields we're validating
       const hasErrors = Object.keys(errors).some(
-        (key) => fieldsToValidate[key]
+        (key) => fieldsToValidate[key],
       );
 
       if (!hasErrors) {
@@ -716,10 +716,10 @@ const IntakeForm = () => {
                     phone
                   </span>
                   <a
-                    href="tel:+447808014132"
+                    href="tel:+447446981768"
                     className="hover:text-primary transition-colors"
                   >
-                    +44 7808 014132
+                    +44 7446 981768
                   </a>
                 </li>
                 <li className="flex items-start space-x-3">
@@ -966,7 +966,7 @@ const IntakeForm = () => {
                                   const newGoals = e.target.checked
                                     ? [...formik.values.goals, goal].slice(0, 2)
                                     : formik.values.goals.filter(
-                                        (g) => g !== goal
+                                        (g) => g !== goal,
                                       );
                                   formik.setFieldValue("goals", newGoals);
                                   formik.setFieldTouched("goals", true, true);
@@ -1030,7 +1030,7 @@ const IntakeForm = () => {
                               key={service.value}
                               className={`flex items-start gap-3 p-4 border rounded-lg cursor-pointer transition-colors ${
                                 formik.values.servicesInterested.includes(
-                                  service.value
+                                  service.value,
                                 )
                                   ? "border-primary bg-primary/5"
                                   : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
@@ -1039,7 +1039,7 @@ const IntakeForm = () => {
                               <input
                                 type="checkbox"
                                 checked={formik.values.servicesInterested.includes(
-                                  service.value
+                                  service.value,
                                 )}
                                 onChange={(e) => {
                                   const newServices = e.target.checked
@@ -1048,23 +1048,23 @@ const IntakeForm = () => {
                                         service.value,
                                       ]
                                     : formik.values.servicesInterested.filter(
-                                        (s) => s !== service.value
+                                        (s) => s !== service.value,
                                       );
                                   formik.setFieldValue(
                                     "servicesInterested",
-                                    newServices
+                                    newServices,
                                   );
                                   formik.setFieldTouched(
                                     "servicesInterested",
                                     true,
-                                    true
+                                    true,
                                   );
                                 }}
                                 onBlur={() =>
                                   formik.setFieldTouched(
                                     "servicesInterested",
                                     true,
-                                    true
+                                    true,
                                   )
                                 }
                                 className="mt-0.5"
@@ -1227,7 +1227,7 @@ const IntakeForm = () => {
                               <input
                                 type="checkbox"
                                 checked={formik.values.enquiryChannels.includes(
-                                  channel
+                                  channel,
                                 )}
                                 onChange={(e) => {
                                   const newChannels = e.target.checked
@@ -1236,23 +1236,23 @@ const IntakeForm = () => {
                                         channel,
                                       ]
                                     : formik.values.enquiryChannels.filter(
-                                        (c) => c !== channel
+                                        (c) => c !== channel,
                                       );
                                   formik.setFieldValue(
                                     "enquiryChannels",
-                                    newChannels
+                                    newChannels,
                                   );
                                   formik.setFieldTouched(
                                     "enquiryChannels",
                                     true,
-                                    true
+                                    true,
                                   );
                                 }}
                                 onBlur={() =>
                                   formik.setFieldTouched(
                                     "enquiryChannels",
                                     true,
-                                    true
+                                    true,
                                   )
                                 }
                               />
@@ -1399,7 +1399,7 @@ const IntakeForm = () => {
                                   key={integration}
                                   className={`flex items-center gap-3 p-3 border rounded-lg cursor-pointer transition-colors ${
                                     formik.values.integrations.includes(
-                                      integration
+                                      integration,
                                     )
                                       ? "border-primary bg-primary/5"
                                       : "border-slate-200 dark:border-slate-700 hover:border-primary/50"
@@ -1408,7 +1408,7 @@ const IntakeForm = () => {
                                   <input
                                     type="checkbox"
                                     checked={formik.values.integrations.includes(
-                                      integration
+                                      integration,
                                     )}
                                     onChange={(e) => {
                                       const newIntegrations = e.target.checked
@@ -1417,11 +1417,11 @@ const IntakeForm = () => {
                                             integration,
                                           ]
                                         : formik.values.integrations.filter(
-                                            (i) => i !== integration
+                                            (i) => i !== integration,
                                           );
                                       formik.setFieldValue(
                                         "integrations",
-                                        newIntegrations
+                                        newIntegrations,
                                       );
                                     }}
                                   />
@@ -1523,7 +1523,7 @@ const IntakeForm = () => {
                                   <input
                                     type="checkbox"
                                     checked={formik.values.aiTasks.includes(
-                                      task
+                                      task,
                                     )}
                                     onChange={(e) => {
                                       const newTasks = e.target.checked
@@ -1532,20 +1532,20 @@ const IntakeForm = () => {
                                             task,
                                           ].slice(0, 3)
                                         : formik.values.aiTasks.filter(
-                                            (t) => t !== task
+                                            (t) => t !== task,
                                           );
                                       formik.setFieldValue("aiTasks", newTasks);
                                       formik.setFieldTouched(
                                         "aiTasks",
                                         true,
-                                        true
+                                        true,
                                       );
                                     }}
                                     onBlur={() =>
                                       formik.setFieldTouched(
                                         "aiTasks",
                                         true,
-                                        true
+                                        true,
                                       )
                                     }
                                   />
@@ -1623,7 +1623,7 @@ const IntakeForm = () => {
                                   <input
                                     type="checkbox"
                                     checked={formik.values.automationTasks.includes(
-                                      task
+                                      task,
                                     )}
                                     onChange={(e) => {
                                       const newTasks = e.target.checked
@@ -1632,23 +1632,23 @@ const IntakeForm = () => {
                                             task,
                                           ]
                                         : formik.values.automationTasks.filter(
-                                            (t) => t !== task
+                                            (t) => t !== task,
                                           );
                                       formik.setFieldValue(
                                         "automationTasks",
-                                        newTasks
+                                        newTasks,
                                       );
                                       formik.setFieldTouched(
                                         "automationTasks",
                                         true,
-                                        true
+                                        true,
                                       );
                                     }}
                                     onBlur={() =>
                                       formik.setFieldTouched(
                                         "automationTasks",
                                         true,
-                                        true
+                                        true,
                                       )
                                     }
                                   />

@@ -14,9 +14,9 @@ const SemiQualifiedScreen = ({ submittedName }) => {
         `1. website link\n` +
         `2. best time to contact you\n` +
         `3. budget range you're comfortable with (monthly + setup)\n\n` +
-        `— Amica Team`
+        `— Amica Team`,
     );
-    window.open(`https://wa.me/447808014132?text=${message}`, "_blank");
+    window.open(`https://wa.me/447446981768?text=${message}`, "_blank");
   };
 
   const handleBackToHome = () => {

@@ -74,10 +74,10 @@ const IntakeForm = () => {
                     phone
                   </span>
                   <a
-                    href="tel:+447808014132"
+                    href="tel:+447446981768"
                     className="hover:text-primary transition-colors"
                   >
-                    +44 7808 014132
+                    +44 7446 981768
                   </a>
                 </li>
                 <li className="flex items-start space-x-3">

@@ -205,7 +205,7 @@ const Pricing = () => {
               Book Free Strategy Call
             </button>
             <a
-              href="https://wa.me/447808014132"
+              href="https://wa.me/447446981768"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-primary/20 border border-white/30 text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-primary/30 transition-colors flex items-center gap-2"

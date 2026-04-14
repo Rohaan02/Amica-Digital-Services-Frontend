@@ -8,9 +8,9 @@ const QualifiedScreen = ({ submittedName }) => {
     const message = encodeURIComponent(
       `Hi ${submittedName} You're ready for the next step.\n` +
         `Please choose a time for your AI Growth Consultation: https://calendly.com/amica-digital/strategy-call\n` +
-        `Speak soon — Amica Digital Services`
+        `Speak soon — Amica Digital Services`,
     );
-    window.open(`https://wa.me/447808014132?text=${message}`, "_blank");
+    window.open(`https://wa.me/447446981768?text=${message}`, "_blank");
   };
 
   return (
@@ -80,7 +80,7 @@ const QualifiedScreen = ({ submittedName }) => {
                     onClick={() => {
                       window.open(
                         "https://calendly.com/amica-digital/strategy-call",
-                        "_blank"
+                        "_blank",
                       );
                     }}
                     className="flex-1 max-w-xs mx-auto sm:mx-0"

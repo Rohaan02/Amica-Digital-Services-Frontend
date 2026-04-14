@@ -121,11 +121,11 @@ const Footer = () => {
               </a>
             </li>
             <li className="flex items-start">
-              <a href="tel:+447808014132" className="space-x-3">
+              <a href="tel:+447446981768" className="space-x-3">
                 <span className="material-icons text-xs mt-1 text-primary">
                   phone
                 </span>
-                <span>+44 7808 014132</span>
+                <span>+44 7446 981768</span>
               </a>
             </li>
             <li className="flex items-start space-x-3">

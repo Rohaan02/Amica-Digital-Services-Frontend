@@ -4,9 +4,9 @@ const FloatingWhatsApp = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Phone number in international format
-  const phoneNumber = "447808014132";
+  const phoneNumber = "447446981768";
   const whatsappMessage = encodeURIComponent(
-    "Hi! I'm interested in learning more about Amica Digital Services."
+    "Hi! I'm interested in learning more about Amica Digital Services.",
   );
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
 
