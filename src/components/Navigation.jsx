@@ -20,6 +20,7 @@ const Navigation = ({ variant = "default", isDark = false }) => {
       hasDropdown: true,
     },
     { label: "Pricing", href: "/pricing" },
+    { label: "Privacy Policy", href: "/policy" },
     { label: "Case Study", href: "/rsm-case-study" },
     { label: "Contact Us", href: "/contact-us" },
   ];
@@ -156,15 +157,6 @@ const Navigation = ({ variant = "default", isDark = false }) => {
       <nav className={getNavClass()}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
           {/* Logo */}
-          {/* <Link to="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="material-icons text-white">bolt</span>
-            </div>
-            <span className="text-2xl font-extrabold tracking-tight text-white dark:text-white uppercase">
-              Amica
-            </span>
-          </Link> */}
-          {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-10 h-10 flex items-center justify-center">
               <img
@@ -174,7 +166,7 @@ const Navigation = ({ variant = "default", isDark = false }) => {
               />
             </div>
             <span className="text-2xl font-extrabold tracking-tight text-white dark:text-white uppercase">
-              Amica
+              Amica Digital
             </span>
           </Link>
 

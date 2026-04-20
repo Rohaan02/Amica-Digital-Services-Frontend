@@ -7,14 +7,13 @@ import About from "./pages/About";
 import IntakeForm from "./pages/IntakeForm";
 import RSMCaseStudy from "./pages/CaseStudy";
 import ServiceDetail from "./components/ServiceDetail";
-import FloatingWhatsApp from "./components/FloatingWhatsApp";
 import ScrollToTop from "./components/ScrollToTop";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <FloatingWhatsApp />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
@@ -23,6 +22,7 @@ function App() {
         <Route path="/rsm-case-study" element={<RSMCaseStudy />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact-us" element={<IntakeForm />} />
+        <Route path="/policy" element={<PrivacyPolicy />} />
       </Routes>
     </Router>
   );

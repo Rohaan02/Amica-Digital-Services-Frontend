@@ -38,6 +38,7 @@ const Footer = () => {
         { label: "Services", href: "/services" },
         { label: "Pricing", href: "/pricing" },
         { label: "Contact Us", href: "/contact-us" },
+        { label: "Privacy Policy", href: "/policy" },
       ],
     },
   ];
@@ -47,14 +48,18 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 mb-20">
         {/* Company Info */}
         <div className="col-span-1 md:col-span-1">
-          <div className="flex items-center space-x-2 mb-6">
-            <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-              <span className="material-icons text-white text-sm">bolt</span>
+          <Link to="/" className="flex items-center space-x-2">
+            <div className="w-10 h-10 flex items-center justify-center">
+              <img
+                src="../Amica_Digital_Services_Logo-removebg-preview.png"
+                alt="Amica Logo"
+                className="w-36 h-36 object-contain"
+              />
             </div>
             <span className="text-xl font-extrabold tracking-tight text-slate-900 dark:text-white uppercase">
-              Amica
+              Amica Digital
             </span>
-          </div>
+          </Link>
           <p className="text-slate-500 text-sm leading-relaxed mb-6">
             AI Growth Systems for Care Agencies & Service Businesses <br />
             <br /> Automate recruitment, lead generation, and compliance
@@ -145,17 +150,6 @@ const Footer = () => {
       {/* Bottom Bar */}
       <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500 border-t border-slate-200 dark:border-white/5 pt-10">
         <p>© 2024 Amica Digital Services. All rights reserved.</p>
-        <div className="flex space-x-6 mt-4 md:mt-0">
-          <Link to="/terms" className="hover:text-primary">
-            Terms of Service
-          </Link>
-          <Link to="/cookies" className="hover:text-primary">
-            Cookie Policy
-          </Link>
-          <Link to="/sitemap" className="hover:text-primary">
-            Sitemap
-          </Link>
-        </div>
       </div>
     </footer>
   );
