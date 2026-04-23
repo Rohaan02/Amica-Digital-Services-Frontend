@@ -9,6 +9,8 @@ import RSMCaseStudy from "./pages/CaseStudy";
 import ServiceDetail from "./components/ServiceDetail";
 import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import BlogList from "./pages/BlogList";
+import BlogDetail from "./pages/BlogDetail";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact-us" element={<IntakeForm />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
+        <Route path="/blog" element={<BlogList />} />
+        <Route path="/blog/:slug" element={<BlogDetail />} />
       </Routes>
     </Router>
   );
