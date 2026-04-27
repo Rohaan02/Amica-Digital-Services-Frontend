@@ -20,9 +20,9 @@ const Navigation = ({ variant = "default", isDark = false }) => {
       hasDropdown: true,
     },
     { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
     { label: "Privacy Policy", href: "/policy" },
     { label: "Case Study", href: "/rsm-case-study" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact Us", href: "/contact-us" },
   ];
 
