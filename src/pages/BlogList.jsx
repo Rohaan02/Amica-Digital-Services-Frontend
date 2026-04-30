@@ -23,23 +23,21 @@ const BlogCard = ({ blog, featured = false }) => {
       }`}
     >
       {/* Cover Image Placeholder */}
-      <div
-        className={`relative overflow-hidden bg-gradient-to-br from-primary/20 via-slate-800 to-navy-deep ${
-          featured ? "h-64" : "h-44"
-        }`}
-      >
-        <div className="absolute inset-0 flex items-center justify-center opacity-10">
-          <span className="material-icons text-8xl text-primary">article</span>
-        </div>
-        {/* Decorative grid lines */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(19,127,236,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(19,127,236,0.08) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-          }}
-        />
+      <div className={`relative overflow-hidden ${featured ? "h-64" : "h-44"}`}>
+        {blog.coverImage ? (
+          <img
+            src={blog.coverImage}
+            alt={blog.title}
+            className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-primary/20 via-slate-800 to-navy-deep flex items-center justify-center">
+            <span className="material-icons text-8xl text-primary opacity-10">
+              article
+            </span>
+          </div>
+        )}
+
         <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-slate-900 to-transparent" />
       </div>
 

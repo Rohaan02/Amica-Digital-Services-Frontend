@@ -5,7 +5,7 @@
     "title": "AI Workflow Automation for Clinics: The Future of Smart Healthcare Operations",
     "excerpt": "AI-based workflow automation in clinics is revolutionizing the way in which medical institutions handle patient care and internal processes. Discover how AI can transform your clinic's operations.",
     "category": "Healthcare AI",
-    "date": "2025-06-10",
+    "date": "2026-04-22",
     "readTime": "7 min read",
     "author": "Amica Digital Services",
     "coverImage": null,
@@ -267,7 +267,7 @@
     "title": "AI vs Traditional Digital Marketing: Which One Drives Better ROI?",
     "excerpt": "Artificial intelligence versus traditional digital marketing is one of the most common and important debates that businesses have to go through. Learn which strategy delivers better performance, efficiency, and long-term growth.",
     "category": "Digital Marketing",
-    "date": "2025-06-15",
+    "date": "2026-04-22",
     "readTime": "8 min read",
     "author": "Amica Digital Services",
     "coverImage": null,
@@ -564,7 +564,7 @@
     "title": "How AI Digital Transformation in Healthcare Is Revolutionizing Patient Care",
     "excerpt": "Transformation of Healthcare in the Digital World is revolutionizing the medical sector through the implementation of modern technology in all medical processes from treatment to administration. Discover how AI, automation, CRM solutions, and smart healthcare systems are maximizing results.",
     "category": "Healthcare AI",
-    "date": "2025-06-20",
+    "date": "2026-04-27",
     "readTime": "7 min read",
     "author": "Amica Digital Services",
     "coverImage": null,
@@ -827,10 +827,10 @@
     "title": "Chatbot vs AI Virtual Assistant in Customer Service Automation",
     "excerpt": "Comparison between Chatbot vs AI Virtual Assistant is one of the most significant among others as far as customer support automation is concerned. Understand which system is best for dealing with customer queries, automation processes, and engagement processes.",
     "category": "AI & Automation",
-    "date": "2025-06-25",
+    "date": "2026-04-29",
     "readTime": "6 min read",
     "author": "Amica Digital Services",
-    "coverImage": null,
+    "coverImage": "/src/assets/chatbot-vs-ai-virtual-assistant.jpg",
     "sections": [
       {
         "type": "paragraph",
@@ -842,11 +842,7 @@
       },
       {
         "type": "table",
-        "headers": [
-          "Feature",
-          "Chatbot",
-          "AI Virtual Assistant"
-        ],
+        "headers": ["Feature", "Chatbot", "AI Virtual Assistant"],
         "rows": [
           [
             "Functionality",

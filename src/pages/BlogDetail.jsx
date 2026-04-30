@@ -147,38 +147,17 @@ const BlogDetail = () => {
       <Navigation />
 
       {/* Hero Banner */}
-      <div className="relative h-64 md:h-80 overflow-hidden bg-gradient-to-br from-primary/20 via-slate-900 to-navy-deep">
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(19,127,236,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(19,127,236,0.07) 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        />
-        <div className="absolute inset-0 flex items-center justify-center opacity-5">
-          <span className="material-icons text-[20rem] text-primary">
-            article
-          </span>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/60 to-transparent" />
+      <div className="relative h-64 md:h-80 overflow-hidden">
+        {blog.coverImage && (
+          <img
+            src={blog.coverImage}
+            alt={blog.title}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
+        )}
 
-        {/* Breadcrumb */}
-        <div className="absolute top-6 left-0 right-0 max-w-4xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center gap-2 text-xs text-slate-400">
-            <Link to="/" className="hover:text-primary transition-colors">
-              Home
-            </Link>
-            <span className="material-icons text-xs">chevron_right</span>
-            <Link to="/blog" className="hover:text-primary transition-colors">
-              Blog
-            </Link>
-            <span className="material-icons text-xs">chevron_right</span>
-            <span className="text-slate-500 truncate max-w-xs">
-              {blog.title}
-            </span>
-          </div>
-        </div>
+        {/* overlay */}
+        <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/70 to-background-dark/30" />
       </div>
 
       {/* Article */}
