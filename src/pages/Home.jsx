@@ -17,6 +17,8 @@ import ResponsibleAI from "../assets/Responsible AI & Compliance.jpg";
 import SEO from "../assets/SEO & Content Systems.jpg";
 import WebCustomSoftware from "../assets/Web & Custom Software.jpg";
 import { createPortal } from "react-dom";
+import blogs from "../data/blogData.json";
+import BlogCard from "../components/BlogCard";
 
 const heroImages = [
   AILeadGeneration,
@@ -246,10 +248,13 @@ const Home = () => {
     { icon: "computer", label: "SaaS & Marketplaces" },
   ];
 
+  const latestBlogs = [...blogs]
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .slice(0, 3);
+
   return (
     <div className="bg-background-light dark:bg-background-dark w-full overflow-x-hidden">
       <Navigation variant="glass" />
-
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center w-full">
         {/* Background Image Slider */}
@@ -379,7 +384,6 @@ const Home = () => {
           </div>,
           document.body,
         )}
-
       {/* Why Amica Section */}
       <section className="py-24 bg-white dark:bg-slate-950/50 w-full">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -396,7 +400,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Core Capabilities with Slider */}
       <section
         className="py-24 bg-background-light dark:bg-background-dark w-full"
@@ -482,7 +485,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
       {/* Case Study */}
       <section
         className="py-24 bg-white dark:bg-background-dark relative overflow-hidden w-full"
@@ -714,7 +716,6 @@ const Home = () => {
           </Link>
         </div>
       </section>
-
       {/* How We Work */}
       <section
         className="py-24 bg-slate-950 text-white relative overflow-hidden w-full"
@@ -757,7 +758,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Industry Focus */}
       <section className="py-24 bg-background-light dark:bg-background-dark w-full">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -890,7 +890,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Industry Focus */}
       <section
         className="py-24 bg-white dark:bg-background-dark w-full"
@@ -940,7 +939,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Final CTA */}
       <section className="py-24 w-full">
         <div className="max-w-7xl mx-auto px-6 w-full">
@@ -988,8 +986,37 @@ const Home = () => {
         </div>
       </section>
 
-      <Footer />
+      {/* Blog List */}
+      <section className="py-24 bg-background-light dark:bg-background-dark w-full">
+        <div className="max-w-7xl mx-auto px-6 w-full">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
+            <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 text-primary text-xs font-bold px-4 py-2 rounded-full mb-6">
+              <span className="material-icons text-sm">rss_feed</span>
+              Amica Insights
+            </div>
+            <h1 className="text-4xl mb-12 md:text-6xl font-extrabold text-slate-900 leading-tight">
+              Blog & <span className="text-primary">Resources</span>
+            </h1>
+          </div>
 
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+            {latestBlogs.map((blog) => (
+              <BlogCard key={blog.id} blog={blog} />
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <div className="mt-12 flex justify-center">
+            <Link to="/blog">
+              <Button variant="ghost" icon="arrow_forward">
+                See More Blogs
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <Footer />
       {/* Add animation styles */}
       <style jsx>{`
         @keyframes fadeIn {
