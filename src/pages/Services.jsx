@@ -12,7 +12,6 @@ import ResponsibleAI from "../assets/Responsible AI & Compliance.jpg";
 import SEO from "../assets/SEO & Content Systems.jpg";
 import WebCustomSoftware from "../assets/Web & Custom Software.jpg";
 import { createPortal } from "react-dom";
-import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
@@ -197,33 +196,6 @@ const Services = () => {
 
   return (
     <div className="bg-background-light dark:bg-background-dark">
-      <Helmet>
-        <title>AI Automation Services Company | Amica Digital</title>
-        <meta
-          name="description"
-          content="AI automation services company delivering smart workflows & AI-driven marketing to boost growth and brand visibility for healthcare & other businesses."
-        />
-        <meta name="keywords" content="AI automation services" />
-        {/* Optional: Add canonical URL */}
-        <link
-          rel="canonical"
-          href={`https://amicadigitalservices.com/services`}
-        />
-        {/* Open Graph tags for social sharing */}
-        <meta
-          property="og:title"
-          content="AI Automation Services Company | Amica Digital"
-        />
-        <meta
-          property="og:description"
-          content="AI automation services company delivering smart workflows & AI-driven marketing to boost growth and brand visibility for healthcare & other businesses"
-        />
-        <meta
-          property="og:url"
-          content={`https://amicadigitalservices.com/services`}
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <Navigation />
 
       {/* Hero Section */}

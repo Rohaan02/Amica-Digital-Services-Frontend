@@ -1,39 +1,9 @@
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import { Helmet } from "react-helmet-async";
 
 const IntakeForm = () => {
   return (
     <div className="bg-background-light dark:bg-background-dark min-h-screen flex flex-col font-display">
-      <Helmet>
-        <title>
-          Contact Us | AI Powered Automation & Digital Services | Amica Digital
-        </title>
-        <meta
-          name="description"
-          content="Contact Amica Digital for AI Powered automation, SEO, web development, and digital services. Let’s grow your business together."
-        />
-        <meta name="keywords" content="ai powered automation" />
-        {/* Optional: Add canonical URL */}
-        <link
-          rel="canonical"
-          href={`https://amicadigitalservices.com/contact-us`}
-        />
-        {/* Open Graph tags for social sharing */}
-        <meta
-          property="og:title"
-          content="Contact Us | AI Powered Automation & Digital Services | Amica Digital"
-        />
-        <meta
-          property="og:description"
-          content="Contact Amica Digital for AI Powered automation, SEO, web development, and digital services. Let’s grow your business together."
-        />
-        <meta
-          property="og:url"
-          content={`https://amicadigitalservices.com/contact-us`}
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <Navigation />
 
       <main className="flex-grow flex items-center justify-center py-12 px-6 pt-12">

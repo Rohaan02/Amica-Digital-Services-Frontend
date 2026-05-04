@@ -5,7 +5,6 @@ import PricingCard from "../components/PricingCard";
 import SectionHeader from "../components/SectionHeader";
 import { Link } from "react-router-dom";
 import { createPortal } from "react-dom";
-import { Helmet } from "react-helmet-async";
 
 const Pricing = () => {
   const pricingPlans = [
@@ -118,39 +117,6 @@ const Pricing = () => {
 
   return (
     <div className="bg-background-light dark:bg-background-dark">
-      <Helmet>
-        <title>
-          Affordable Pricing for AI Marketing Automation​| Amica Digital
-        </title>
-        <meta
-          name="description"
-          content="Explore pricing plans for AI marketing automation, SEO, web development, and digital services. Transparent pricing with Amica Digital."
-        />
-        <meta
-          name="keywords"
-          content="ai marketing automation​
-"
-        />
-        {/* Optional: Add canonical URL */}
-        <link
-          rel="canonical"
-          href={`https://amicadigitalservices.com/pricing`}
-        />
-        {/* Open Graph tags for social sharing */}
-        <meta
-          property="og:title"
-          content="Affordable Pricing for AI Marketing Automation​| Amica Digital"
-        />
-        <meta
-          property="og:description"
-          content="Explore pricing plans for AI marketing automation, SEO, web development, and digital services. Transparent pricing with Amica Digital."
-        />
-        <meta
-          property="og:url"
-          content={`https://amicadigitalservices.com/pricing`}
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
       <Navigation />
 
       {/* Hero Section */}
