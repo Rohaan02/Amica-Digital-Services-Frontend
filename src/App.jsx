@@ -11,19 +11,21 @@ import ScrollToTop from "./components/ScrollToTop";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
+import MetaTagUpdater from "./components/MetaTagUpdater";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
+      <MetaTagUpdater />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
         <Route path="/pricing" element={<Pricing />} />
-        <Route path="/rsm-case-study" element={<RSMCaseStudy />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact-us" element={<IntakeForm />} />
+        <Route path="/rsm-case-study" element={<RSMCaseStudy />} />
         <Route path="/policy" element={<PrivacyPolicy />} />
         <Route path="/blog" element={<BlogList />} />
         <Route path="/blog/:slug" element={<BlogDetail />} />
