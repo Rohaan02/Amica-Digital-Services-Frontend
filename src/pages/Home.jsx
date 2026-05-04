@@ -19,6 +19,7 @@ import WebCustomSoftware from "../assets/Web & Custom Software.jpg";
 import { createPortal } from "react-dom";
 import blogs from "../data/blogData.json";
 import BlogCard from "../components/BlogCard";
+import { Helmet } from "react-helmet-async";
 
 const heroImages = [
   AILeadGeneration,
@@ -254,6 +255,29 @@ const Home = () => {
 
   return (
     <div className="bg-background-light dark:bg-background-dark w-full overflow-x-hidden">
+      <Helmet>
+        <title>
+          AI Automation Agency UK & AI Digital Marketing | Amica Digital
+        </title>
+        <meta
+          name="description"
+          content="AI automation agency for healthcare & business, B2B & B2C. AI automation helps out to capture leads, automate workflows, reduce costs & scale faster."
+        />
+        <meta name="keywords" content="ai automation agency​" />
+        {/* Optional: Add canonical URL */}
+        <link rel="canonical" href={`https://amicadigitalservices.com`} />
+        {/* Open Graph tags for social sharing */}
+        <meta
+          property="og:title"
+          content="AI Automation Agency UK & AI Digital Marketing | Amica Digital"
+        />
+        <meta
+          property="og:description"
+          content="AI automation agency for healthcare & business, B2B & B2C. AI automation helps out to capture leads, automate workflows, reduce costs & scale faster."
+        />
+        <meta property="og:url" content={`https://amicadigitalservices.com`} />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navigation variant="glass" />
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-screen flex items-center w-full">

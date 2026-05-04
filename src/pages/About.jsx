@@ -5,6 +5,8 @@ import Button from "../components/Button";
 import SectionHeader from "../components/SectionHeader";
 import { Link } from "react-router-dom";
 import AboutUsImage from "../assets/Care Agency Recruitment & Compliance Automation System.jpg";
+import { Helmet } from "react-helmet-async";
+
 const About = () => {
   const philosophyPoints = [
     {
@@ -75,6 +77,32 @@ const About = () => {
 
   return (
     <div className="bg-background-light dark:bg-background-dark">
+      <Helmet>
+        <title>
+          About Amica Digital | AI Marketing Agency for Healthcare & Business
+        </title>
+        <meta
+          name="description"
+          content="Discover about Amica Digital an AI digital marketing agency in UK helping healthcare & other brands grow smarter."
+        />
+        <meta name="keywords" content="About Amica Digital" />
+        {/* Optional: Add canonical URL */}
+        <link rel="canonical" href={`https://amicadigitalservices.com/about`} />
+        {/* Open Graph tags for social sharing */}
+        <meta
+          property="og:title"
+          content="About Amica Digital | AI Marketing Agency for Healthcare & Business"
+        />
+        <meta
+          property="og:description"
+          content="Discover about Amica Digital an AI digital marketing agency in UK helping healthcare & other brands grow smarter."
+        />
+        <meta
+          property="og:url"
+          content={`https://amicadigitalservices.com/about`}
+        />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Navigation />
 
       {/* Hero Section */}
