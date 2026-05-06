@@ -7,7 +7,10 @@ import blogs from "../data/blogData.json";
 /* ─── Section Renderers ─── */
 
 const Paragraph = ({ content }) => (
-  <p className="text-slate-300 leading-relaxed text-base mb-5">{content}</p>
+  <p
+    className="text-slate-300 leading-relaxed text-base mb-5"
+    dangerouslySetInnerHTML={{ __html: content }}
+  />
 );
 
 const Heading = ({ content }) => (
@@ -193,9 +196,10 @@ const BlogDetail = () => {
           </h1>
 
           {/* Excerpt */}
-          <p className="text-slate-400 text-base leading-relaxed border-l-2 border-primary/40 pl-4 italic">
-            {blog.excerpt}
-          </p>
+          <p
+            className="text-slate-400 text-base leading-relaxed border-l-2 border-primary/40 pl-4 italic"
+            dangerouslySetInnerHTML={{ __html: blog.excerpt }}
+          />
         </div>
 
         {/* Body */}
