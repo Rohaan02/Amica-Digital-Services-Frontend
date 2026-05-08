@@ -766,13 +766,13 @@ const Home = () => {
       <section className="py-24 bg-background-light dark:bg-background-dark w-full">
         <div className="max-w-7xl mx-auto px-6 w-full">
           <SectionHeader
-            title="Trusted Across Healthcare & Professional Services"
-            description="Specialized AI solutions built for the unique challenges of care agencies, clinics, and professional service firms."
+            title="Trusted Across Businesses, Healthcare and Professional Services"
+            description="Specialized AI digital solutions built for the unique challenges of businesses, care agencies, clinics, and professional service firms."
             className="mb-16"
           />
 
           <div className="grid md:grid-cols-3 gap-8 w-full">
-            {/* Care Agencies Card */}
+            {/* Businesses Card */}
             <div className="group relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-primary/30 dark:hover:border-primary/30 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 hover:-translate-y-2 w-full">
               {/* Background Decoration */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-emerald-500/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -789,30 +789,31 @@ const Home = () => {
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-primary transition-colors duration-300">
-                Care Agencies
+                Businesses
               </h3>
 
               {/* Description */}
               <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
-                Streamline recruitment, compliance tracking, and staff
-                scheduling with AI-powered workforce automation.
+                AI digital marketing solution for lead generation, customer
+                engagement, business growth and operational automation across
+                industries.
               </p>
 
               {/* Key Challenges Tags */}
               <div className="flex flex-wrap gap-2 mb-6">
                 <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                  Compliance
+                  Digital growth
                 </span>
                 <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                  Staff Shortages
+                  Improve ROI
                 </span>
                 <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                  Documentation
+                  Automation
                 </span>
               </div>
             </div>
 
-            {/* Clinics Card */}
+            {/* Healthcare Card */}
             <div className="group relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-900 dark:to-slate-950 rounded-3xl p-8 border border-slate-200 dark:border-slate-800 hover:border-emerald-500/30 dark:hover:border-emerald-500/30 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-500/5 hover:-translate-y-2 w-full">
               {/* Background Decoration */}
               <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-primary/5 rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -829,13 +830,13 @@ const Home = () => {
 
               {/* Title */}
               <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-emerald-500 transition-colors duration-300">
-                Clinics
+                Healthcare
               </h3>
 
               {/* Description */}
               <p className="text-slate-500 dark:text-slate-400 mb-6 leading-relaxed">
-                Automate patient intake, appointment scheduling, and follow-ups
-                while maintaining regulatory compliance.
+                Automate patient intake, appointment scheduling, recruitment,
+                and follow-ups while maintaining regulatory compliance.
               </p>
 
               {/* Key Challenges Tags */}
@@ -847,7 +848,7 @@ const Home = () => {
                   Scheduling
                 </span>
                 <span className="text-xs bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 px-3 py-1.5 rounded-full">
-                  Records
+                  Compliance
                 </span>
               </div>
             </div>
