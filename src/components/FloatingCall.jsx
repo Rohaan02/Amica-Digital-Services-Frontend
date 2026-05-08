@@ -4,7 +4,7 @@ const FloatingCall = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   // Phone number in international format
-  const phoneNumber = "447446981768";
+  const phoneNumber = "+447446981768";
   const telUrl = `tel:${phoneNumber}`;
 
   // Show button after page loads
