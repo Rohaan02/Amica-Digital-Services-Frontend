@@ -246,6 +246,10 @@ const Home = () => {
     { icon: "business_center", label: "Professional Services" },
     { icon: "spa", label: "Clinics & Wellness" },
     { icon: "computer", label: "SaaS & Marketplaces" },
+    { icon: "swap_horiz", label: "B2B & B2C Businesses" },
+    { icon: "apartment", label: "Real Estate & Construction" },
+    { icon: "factory", label: "Manufacturing" },
+    { icon: "storefront", label: "Retail & SMEs" },
   ];
 
   const latestBlogs = [...blogs]
