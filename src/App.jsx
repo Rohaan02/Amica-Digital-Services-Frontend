@@ -12,12 +12,14 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import BlogList from "./pages/BlogList";
 import BlogDetail from "./pages/BlogDetail";
 import MetaTagUpdater from "./components/MetaTagUpdater";
+import FloatingCall from "./components/FloatingCall";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <MetaTagUpdater />
+      <FloatingCall />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
